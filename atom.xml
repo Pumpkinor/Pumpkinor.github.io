@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-07-30T14:03:14.388Z</updated>
+  <updated>2017-07-30T14:12:39.575Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="https://pumpkinor.github.io/2017/07/29/Some-Classical-Sorting-Methods-3/"/>
     <id>https://pumpkinor.github.io/2017/07/29/Some-Classical-Sorting-Methods-3/</id>
     <published>2017-07-29T03:00:00.000Z</published>
-    <updated>2017-07-30T14:03:14.388Z</updated>
+    <updated>2017-07-30T14:12:39.575Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li><p>冒泡排序</p>
-<p>冒泡排序的实质在于交换，即每次通过比较数组相邻元素，把较大的一个元素移动到右边。</p>
+<p>冒泡排序的实质在于交换，即多次通过比较数组相邻元素，把其中最大的一个元素移动到最右边的位置放置不管，再在剩余元素中进行同样的操作，直到剩余元素为0为止。具体比较方式如下：</p>
 <p>从a[0]与a[1]比较到a[n-2]与a[n-1]并将二者之间较大的元素放到右边位置，这样一次操作称之为一轮冒泡，此时数组最右边元素a[n-1]就是整个数组元素中最大的那一个。</p>
 <p>第2轮则是从a[0]与a[1]比较到a[n-3]与a[n-2]并将二者之间较大的元素放到右边位置，由于已知a[n-1]是整个数组元素中最大的那一个，故不需要再重复比较a[n-2]和a[n-1]的大小，此时数组元素a[n-2]就是整个数组元素中第二大的那一个。</p>
 <p>第3轮则是从a[0]与a[1]比较到a[n-4]与a[n-3]并将二者之间较大的元素放到右边位置。</p>
@@ -54,8 +54,8 @@
     
       &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;冒泡排序&lt;/p&gt;
-&lt;p&gt;冒泡排序的实质在于交换，即每次通过比较数组相邻元素，把较大的一个元素移动到右边。&lt;/p&gt;
-&lt;p&gt;从a[0]与a[1]比较到a[n-2]与a[n-1]并将二者之间较大的元素放到右边位置，这样一次操作称之为一轮冒泡，此时数组最右边元素a
+&lt;p&gt;冒泡排序的实质在于交换，即多次通过比较数组相邻元素，把其中最大的一个元素移动到最右边的位置放置不管，再在剩余元素中进行同样的操作，直到剩余元素为0为止。具体比较方式如下：&lt;/p&gt;
+&lt;p&gt;从a[0]与a[1]比较到a[n-2]与a[n
     
     </summary>
     
