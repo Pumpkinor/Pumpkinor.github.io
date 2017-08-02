@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Pumpkinor</title>
   <subtitle>Learning and Coding</subtitle>
-  <link href="/gitpage/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://yoursite.com/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2017-08-02T15:28:51.307Z</updated>
-  <id>https://yoursite.com/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>Pumpkinor</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>在Github和Coding上用Hexo部署自己的静态博客</title>
-    <link href="https://yoursite.com/2017/08/02/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://yoursite.com/2017/08/02/在Github和Coding上用Hexo部署自己的静态博客/</id>
+    <link href="http://yoursite.com/2017/08/02/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/08/02/在Github和Coding上用Hexo部署自己的静态博客/</id>
     <published>2017-08-02T15:25:00.000Z</published>
     <updated>2017-08-02T15:28:51.307Z</updated>
     
@@ -35,15 +35,15 @@
     
     </summary>
     
-      <category term="Configuration Tutorial" scheme="https://yoursite.com/categories/Configuration-Tutorial/"/>
+      <category term="Configuration Tutorial" scheme="http://yoursite.com/categories/Configuration-Tutorial/"/>
     
     
   </entry>
   
   <entry>
     <title>Some Classical Sorting Methods </title>
-    <link href="https://yoursite.com/2017/07/29/Some-Classical-Sorting-Methods-3/"/>
-    <id>https://yoursite.com/2017/07/29/Some-Classical-Sorting-Methods-3/</id>
+    <link href="http://yoursite.com/2017/07/29/Some-Classical-Sorting-Methods-3/"/>
+    <id>http://yoursite.com/2017/07/29/Some-Classical-Sorting-Methods-3/</id>
     <published>2017-07-29T03:00:00.000Z</published>
     <updated>2017-07-30T14:14:01.110Z</updated>
     
@@ -84,15 +84,15 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="https://yoursite.com/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="http://yoursite.com/categories/Algorithm/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://yoursite.com/2017/07/28/hello-world/"/>
-    <id>https://yoursite.com/2017/07/28/hello-world/</id>
+    <link href="http://yoursite.com/2017/07/28/hello-world/"/>
+    <id>http://yoursite.com/2017/07/28/hello-world/</id>
     <published>2017-07-28T15:43:16.893Z</published>
     <updated>2017-07-29T06:15:11.750Z</updated>
     
@@ -113,7 +113,7 @@
     
     </summary>
     
-      <category term="others" scheme="https://yoursite.com/categories/others/"/>
+      <category term="others" scheme="http://yoursite.com/categories/others/"/>
     
     
   </entry>
