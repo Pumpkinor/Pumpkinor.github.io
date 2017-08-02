@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title><![CDATA[在Github和Coding上用Hexo部署自己的静态博客]]></title>
+      <url>/gitpage/2017/08/02/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><pre><code>现在你所访问的这个博客就是基于Github和Coding（国内访问稳定）的静态页面服务利用Hexo框架所假设的博客。
+
+Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。下面，来具体介绍一下相关的配置和使用，以windows系统为例：
+
+step1：首先，我们需要在电脑上下载并安装Node.js和Git Bash（点击链接跳转下载页面）两个软件，无需改动任何设置，默认安装即可。
+
+step2：在电脑中新建一个文件夹用于架设博客，Hexo框架和你今后所写的博文还有编译以后的静态页面都会存放在这个文件夹里。
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Some Classical Sorting Methods ]]></title>
       <url>/gitpage/2017/07/29/Some-Classical-Sorting-Methods-3/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ol>
