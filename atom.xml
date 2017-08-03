@@ -5,7 +5,7 @@
   <link href="/gitpage/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-02T15:28:51.307Z</updated>
+  <updated>2017-07-30T14:14:01.110Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,31 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>在Github和Coding上用Hexo部署自己的静态博客</title>
-    <link href="http://yoursite.com/2017/08/02/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2017/08/02/在Github和Coding上用Hexo部署自己的静态博客/</id>
-    <published>2017-08-02T15:25:00.000Z</published>
-    <updated>2017-08-02T15:28:51.307Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>​    现在你所访问的这个博客就是基于Github和Coding（国内访问稳定）的静态页面服务利用Hexo框架所假设的博客。</p>
-<p>​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。下面，来具体介绍一下相关的配置和使用，以windows系统为例：</p>
-<p>​    step1：首先，我们需要在电脑上下载并安装<a href="http://nodejs.cn/download/" target="_blank" rel="external">Node.js</a>和<a href="https://git-scm.com/download/win" target="_blank" rel="external">Git Bash</a>（点击链接跳转下载页面）两个软件，无需改动任何设置，默认安装即可。</p>
-<p>​    step2：在电脑中新建一个文件夹用于架设博客，Hexo框架和你今后所写的博文还有编译以后的静态页面都会存放在这个文件夹里。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;​    现在你所访问的这个博客就是基于Github和Coding（国内访问稳定）的静态页面服务利用Hexo框架所假设的博客。&lt;/p&gt;
-&lt;p&gt;​    Hexo 是一个快速、
-    
-    </summary>
-    
-      <category term="Configuration Tutorial" scheme="http://yoursite.com/categories/Configuration-Tutorial/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>Some Classical Sorting Methods </title>
