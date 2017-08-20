@@ -3,75 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[挖掘机技术哪家强]]></title>
-      <url>/2017/08/20/%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1032 挖掘机技术哪家强(20)</p>
-<p>时间限制<br>200 ms<br>内存限制<br>65536 kB</p>
-<p>为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</p>
-<p>输入格式：</p>
-<p>输入在第1行给出不超过10的5次方的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续编号）、及其比赛成绩（百分制），中间以空格分隔。</p>
-<p>输出格式：</p>
-<p>在一行中给出总得分最高的学校的编号、及其总分，中间以空格分隔。题目保证答案唯一，没有并列。 </p>
-<p>输入样例：<br>6<br>3 65<br>2 80<br>1 100<br>2 70<br>3 40<br>3 0</p>
-<p>输出样例：</p>
-<p>2 150</p>
-<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p>根据题目描述，我们可以知道输入的参数是参赛选手的学校编号和所得分数，不保证也不排除一个学校只派出一名参赛者，即一所学校的总分是由一名或者多名选手的得分之和组成。求获得总分最高的学校：</p>
-<ul>
-<li>step 1，建立一个数组school[MAXSIZE]用于存放每个学校的总分，如数组元素school[1]就是编号为1的学校的总分，数组初始值赋为0；</li>
-<li>step 2，用SchId表示选手的学校编号，SchCore表示该选手对应的成绩；</li>
-<li>step 3，每次输入一个SchId和SchCore，在对应数组位school[SchId]上加上SchCore；</li>
-<li>step 4，在输入完所有的选手学校编号和得分信息之后，school数组中存放的就是每个学校最后的总分了，当然，由于学校编号是从1开始的school[0]存放的数据是初始值0，没有意义；</li>
-<li>step 5，遍历school数组，找出其中最大的元素赋值给maxCore和对应的数组下标即学校编号赋值给num然后打印输出。</li>
-</ul>
-<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">100010</span>;</div><div class="line"><span class="keyword">int</span> school[MAXSIZE] = &#123;<span class="number">0</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> n,num = <span class="number">0</span>,maxCore = <span class="number">0</span>;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> SchId,SchCore;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;			<span class="comment">//i从0到n-1，一共输入n个参赛者信息 </span></div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;SchId,&amp;SchCore);</div><div class="line">		school[SchId] += SchCore;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;			</div><div class="line">    <span class="comment">//学校编号SchId是从1开始的，n个参赛者最多可能来自n个学校，需要比较的学校编号应该是1到n </span></div><div class="line">		<span class="keyword">if</span>(school[i] &gt;= maxCore)&#123;</div><div class="line">			num = i;</div><div class="line">			maxCore = school[num];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d"</span>,num,maxCore);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> PAT B level </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[害死人不偿命的(3n+1)猜想]]></title>
-      <url>/2017/08/20/%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84-3n-1-%E7%8C%9C%E6%83%B3/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1001 害死人不偿命的(3n+1)猜想 (15)</p>
-<p>时间限制<br>400 ms<br>内存限制<br>65536 kB</p>
-<p>卡拉兹(Callatz)猜想：</p>
-<p>对任何一个自然数n，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把(3n+1)砍掉一半。这样一直反复砍下去，最后一定在某一步得到n=1。卡拉兹在1950年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证3n+1，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p>
-<p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过1000的正整数n，简单地数一下，需要多少步（砍几下）才能得到n=1？</p>
-<p>输入格式：</p>
-<p>每个测试输入包含1个测试用例，即给出自然数n的值。</p>
-<p>输出格式：</p>
-<p>输出从n计算到1需要的步数。</p>
-<p>输入样例：<br>3</p>
-<p>输出样例：</p>
-<p>5</p>
-<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p>这是个简单的题目，只要根据题目描述，一步一步将描述信息转化为代码实现即可。</p>
-<ul>
-<li>step 1，输入一个自然数n；</li>
-<li>step 2，判断自然数n是奇数还是偶数；</li>
-<li>step 3，对判断为偶数的情况进行除以2操作；</li>
-<li>step 4，对判断为基数的情况下进行(3*n+1)/2操作；</li>
-<li>step 5，不断重复step 3和step 4，直到n等于1为止；</li>
-<li>step 6，打印用于统计次数的变量。</li>
-</ul>
-<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> n,step=<span class="number">0</span>;</div><div class="line">	<span class="comment">//step用于统计操作次数</span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">while</span>(n!=<span class="number">1</span>)	</div><div class="line">	&#123;</div><div class="line">      <span class="comment">//当n不为1时执行循环</span></div><div class="line">		<span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">			n=n/<span class="number">2</span>;</div><div class="line">      <span class="comment">//n为偶数的情况</span></div><div class="line">		<span class="keyword">else</span></div><div class="line">			n=(<span class="number">3</span>*n+<span class="number">1</span>)/<span class="number">2</span>;</div><div class="line">      <span class="comment">//n为基数的情况</span></div><div class="line">		step++;</div><div class="line">      <span class="comment">//每执行一次操作step加1</span></div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,step);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> PAT B level </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[《算法笔记及上机实战指南》学习笔记]]></title>
       <url>/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>最近在跟着胡凡的《算法笔记》和配套的《上机训练实战指南》学习基本的算法。就是这两本。</p>
@@ -124,6 +55,75 @@
             <tag> Note </tag>
             
         </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[挖掘机技术哪家强]]></title>
+      <url>/2017/08/20/%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1032 挖掘机技术哪家强(20)</p>
+<p>时间限制<br>200 ms<br>内存限制<br>65536 kB</p>
+<p>为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</p>
+<p>输入格式：</p>
+<p>输入在第1行给出不超过10的5次方的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续编号）、及其比赛成绩（百分制），中间以空格分隔。</p>
+<p>输出格式：</p>
+<p>在一行中给出总得分最高的学校的编号、及其总分，中间以空格分隔。题目保证答案唯一，没有并列。 </p>
+<p>输入样例：<br>6<br>3 65<br>2 80<br>1 100<br>2 70<br>3 40<br>3 0</p>
+<p>输出样例：</p>
+<p>2 150</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p>根据题目描述，我们可以知道输入的参数是参赛选手的学校编号和所得分数，不保证也不排除一个学校只派出一名参赛者，即一所学校的总分是由一名或者多名选手的得分之和组成。求获得总分最高的学校：</p>
+<ul>
+<li>step 1，建立一个数组school[MAXSIZE]用于存放每个学校的总分，如数组元素school[1]就是编号为1的学校的总分，数组初始值赋为0；</li>
+<li>step 2，用SchId表示选手的学校编号，SchCore表示该选手对应的成绩；</li>
+<li>step 3，每次输入一个SchId和SchCore，在对应数组位school[SchId]上加上SchCore；</li>
+<li>step 4，在输入完所有的选手学校编号和得分信息之后，school数组中存放的就是每个学校最后的总分了，当然，由于学校编号是从1开始的school[0]存放的数据是初始值0，没有意义；</li>
+<li>step 5，遍历school数组，找出其中最大的元素赋值给maxCore和对应的数组下标即学校编号赋值给num然后打印输出。</li>
+</ul>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">100010</span>;</div><div class="line"><span class="keyword">int</span> school[MAXSIZE] = &#123;<span class="number">0</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> n,num = <span class="number">0</span>,maxCore = <span class="number">0</span>;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> SchId,SchCore;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;			<span class="comment">//i从0到n-1，一共输入n个参赛者信息 </span></div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;SchId,&amp;SchCore);</div><div class="line">		school[SchId] += SchCore;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;			</div><div class="line">    <span class="comment">//学校编号SchId是从1开始的，n个参赛者最多可能来自n个学校，需要比较的学校编号应该是1到n </span></div><div class="line">		<span class="keyword">if</span>(school[i] &gt;= maxCore)&#123;</div><div class="line">			num = i;</div><div class="line">			maxCore = school[num];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d"</span>,num,maxCore);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="https://pumpkinor.github.io/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">返回目录</a></h4>]]></content>
+      
+        <categories>
+            
+            <category> PAT B level </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[害死人不偿命的(3n+1)猜想]]></title>
+      <url>/2017/08/20/%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84-3n-1-%E7%8C%9C%E6%83%B3/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1001 害死人不偿命的(3n+1)猜想 (15)</p>
+<p>时间限制<br>400 ms<br>内存限制<br>65536 kB</p>
+<p>卡拉兹(Callatz)猜想：</p>
+<p>对任何一个自然数n，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把(3n+1)砍掉一半。这样一直反复砍下去，最后一定在某一步得到n=1。卡拉兹在1950年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证3n+1，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p>
+<p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过1000的正整数n，简单地数一下，需要多少步（砍几下）才能得到n=1？</p>
+<p>输入格式：</p>
+<p>每个测试输入包含1个测试用例，即给出自然数n的值。</p>
+<p>输出格式：</p>
+<p>输出从n计算到1需要的步数。</p>
+<p>输入样例：<br>3</p>
+<p>输出样例：</p>
+<p>5</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p>这是个简单的题目，只要根据题目描述，一步一步将描述信息转化为代码实现即可。</p>
+<ul>
+<li>step 1，输入一个自然数n；</li>
+<li>step 2，判断自然数n是奇数还是偶数；</li>
+<li>step 3，对判断为偶数的情况进行除以2操作；</li>
+<li>step 4，对判断为基数的情况下进行(3*n+1)/2操作；</li>
+<li>step 5，不断重复step 3和step 4，直到n等于1为止；</li>
+<li>step 6，打印用于统计次数的变量。</li>
+</ul>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> n,step=<span class="number">0</span>;</div><div class="line">	<span class="comment">//step用于统计操作次数</span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">while</span>(n!=<span class="number">1</span>)	</div><div class="line">	&#123;</div><div class="line">      <span class="comment">//当n不为1时执行循环</span></div><div class="line">		<span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">			n=n/<span class="number">2</span>;</div><div class="line">      <span class="comment">//n为偶数的情况</span></div><div class="line">		<span class="keyword">else</span></div><div class="line">			n=(<span class="number">3</span>*n+<span class="number">1</span>)/<span class="number">2</span>;</div><div class="line">      <span class="comment">//n为基数的情况</span></div><div class="line">		step++;</div><div class="line">      <span class="comment">//每执行一次操作step加1</span></div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,step);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="https://pumpkinor.github.io/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">返回目录</a></h4>]]></content>
+      
+        <categories>
+            
+            <category> PAT B level </category>
+            
+        </categories>
+        
         
     </entry>
     
