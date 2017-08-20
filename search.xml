@@ -3,6 +3,30 @@
   
     
     <entry>
+      <title><![CDATA[《算法笔记及上机实战指南》学习笔记]]></title>
+      <url>/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>​     最近在跟着胡凡的《算法笔记》和配套的《上机训练实战指南》学习基本的算法。就是这两本。</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%B0%81%E9%9D%A2.jpg" alt="算法笔记"></p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83%E5%B0%81%E9%9D%A2.jpg" alt="上机实战训练指南"></p>
+<p>​    在这里记录一下学习之中的一些心得和一些题目的解题思路，权当备忘，因为这个博客也并没有加入百度或者谷歌的SEO，这意味着，它不会被你在搜索引擎中搜索到，唯二能够访问这个博客的可能只是从我本人这里获取地址或者从我的<a href="https://github.com/Pumpkinor/" target="_blank" rel="external">Github</a>主页上链接过来。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Algorithm Note </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Note </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[在Github和Coding上用Hexo部署自己的静态博客]]></title>
       <url>/2017/08/03/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>​    现在你所访问的这个博客就是基于Github和Coding（国内访问稳定）的静态页面服务利用Hexo框架所假设的博客。</p>
