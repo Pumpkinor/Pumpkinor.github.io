@@ -5,12 +5,12 @@
     <entry>
       <title><![CDATA[《算法笔记及上机实战指南》学习笔记]]></title>
       <url>/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><pre><code>最近在跟着胡凡的《算法笔记》和配套的《上机训练实战指南》学习基本的算法。就是这两本。
-</code></pre><p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%B0%81%E9%9D%A2.jpg" alt="算法笔记"></p>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>最近在跟着胡凡的《算法笔记》和配套的《上机训练实战指南》学习基本的算法。就是这两本。</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%B0%81%E9%9D%A2.jpg" alt="算法笔记"></p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83%E5%B0%81%E9%9D%A2.jpg" alt="上机实战训练指南"></p>
-<pre><code>在这里记录一下学习之中的一些心得和一些题目的解题思路，不保证最优，欢迎指正，权当备忘，因为这个博客也并没有加入百度或者谷歌的SEO，这意味着，它不会被你在搜索引擎中搜索到，唯二能够访问这个博客的可能只是从我本人这里获取地址或者从我的[Github](https://github.com/Pumpkinor/)主页上链接过来。
-</code></pre><h4 id="第二章-C-C-快速入门"><a href="#第二章-C-C-快速入门" class="headerlink" title="第二章  C/C++ 快速入门"></a>第二章  C/C++ 快速入门</h4><pre><code>这一章是对于基础的C/C++语言语法进行简略的介绍，不作为系统性的C/C++语言学习使用，只讲述与算法竞赛，在线oj相关的语法。侧重于C语言，因为C++语法在机考中多数是用不到的。
-</code></pre><ol>
+<p>在这里记录一下学习之中的一些心得和一些题目的解题思路，不保证最优，欢迎指正，权当备忘，因为这个博客也并没有加入百度或者谷歌的SEO，这意味着，它不会被你在搜索引擎中搜索到，唯二能够访问这个博客的可能只是从我本人这里获取地址或者从我的<a href="https://github.com/Pumpkinor/" target="_blank" rel="external">Github</a>主页上链接过来。</p>
+<h4 id="第二章-C-C-快速入门"><a href="#第二章-C-C-快速入门" class="headerlink" title="第二章  C/C++ 快速入门"></a>第二章  C/C++ 快速入门</h4><p>这一章是对于基础的C/C++语言语法进行简略的介绍，不作为系统性的C/C++语言学习使用，只讲述与算法竞赛，在线oj相关的语法。侧重于C语言，因为C++语法在机考中多数是用不到的。</p>
+<ol>
 <li>变量类型</li>
 <li>关于数据的输入输出</li>
 <li>用typedef给数据类型起别名</li>
@@ -26,9 +26,8 @@
 <li>浮点数比较</li>
 <li>在线oj的几种测试模式</li>
 </ol>
-<h4 id="第三章-入门模拟"><a href="#第三章-入门模拟" class="headerlink" title="第三章  入门模拟"></a>第三章  入门模拟</h4><pre><code>这一章主要讲解一些简单的模拟类编程题，没有涉及复杂算法，只要“题目怎么说，你就怎么做”一般都是能够顺利做出来的，主要考察和训练个人的代码能力，对于基础代码能力的提高很有帮助。
-下面给出例题和课后题的个人思考和分析，仅供参考使用。
-</code></pre><h5 id="3-1-简单模拟："><a href="#3-1-简单模拟：" class="headerlink" title="3.1 简单模拟："></a>3.1 简单模拟：</h5><ol>
+<h4 id="第三章-入门模拟"><a href="#第三章-入门模拟" class="headerlink" title="第三章  入门模拟"></a>第三章  入门模拟</h4><p>这一章主要讲解一些简单的模拟类编程题，没有涉及复杂算法，只要“题目怎么说，你就怎么做”一般都是能够顺利做出来的，主要考察和训练个人的代码能力，对于基础代码能力的提高很有帮助。<br>下面给出例题和课后题的个人思考和分析，仅供参考使用。</p>
+<h5 id="3-1-简单模拟："><a href="#3-1-简单模拟：" class="headerlink" title="3.1 简单模拟："></a>3.1 简单模拟：</h5><ol>
 <li><a href="">PAT B1001 害死人不偿命的(3n+1)猜想</a></li>
 <li><a href="">PAT B1032 挖掘机技术哪家强</a></li>
 </ol>
