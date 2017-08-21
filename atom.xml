@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-08-20T14:30:12.866Z</updated>
+  <updated>2017-08-21T07:21:31.807Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>找x</title>
+    <link href="https://pumpkinor.github.io/2017/08/21/%E6%89%BEx/"/>
+    <id>https://pumpkinor.github.io/2017/08/21/找x/</id>
+    <published>2017-08-21T07:03:14.000Z</published>
+    <updated>2017-08-21T07:21:31.807Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>Codeup 1934 找x</p>
+<p>时间限制 1 Sec  内存限制 32 MB</p>
+<p>题目描述</p>
+<p>输入一个数n，然后输入n个数值各不相同，再输入一个值x，输出这个值在这个数组中的下标（从0开始，若不在数组中则输出-1）。</p>
+<p>输入<br>测试数据有多组，输入n(1&lt;=n&lt;=200)，接着输入n个数，然后输入x。</p>
+<p>输出<br>对于每组输入,请输出结果。</p>
+<p>样例输入<br>4<br>1 2 3 4<br>3</p>
+<p>样例输出</p>
+<p>2</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p>题目要求从从n个数之中找到值等于x的数并返回其在数组中的下标，即这n个数是从0开始计数的，并且要求如果这n个数中没有等于x的数要打印输出-1。</p>
+<p>题目整体不难，根据描述思路很清晰，即：</p>
+<ul>
+<li>step 1，输入n个数存放到数组a；</li>
+<li>step 2，循环遍历比较每个数组元素与x是否相等；</li>
+<li>step 3，当发现与x相等的数组元素时跳出循环，并且输出该元素的数组下标k；</li>
+<li>step 4，如果遍历完整个数组之后也即k == n时仍然没有与x相等的元素，则直接打印输出-1。</li>
+</ul>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> n,x,k,a[<span class="number">210</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">  <span class="comment">//题目要求1&lt;=n&lt;=200,故定义存放数据的数组空间要略大于200</span></div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) != EOF)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">		<span class="keyword">for</span>(k = <span class="number">0</span>;k &lt; n;k++)&#123;</div><div class="line">			<span class="keyword">if</span>(a[k] == x)&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,k);</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(k == n)</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="https://pumpkinor.github.io/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">返回目录</a></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;题目描述：&lt;/h4&gt;&lt;p&gt;Codeup 1
+    
+    </summary>
+    
+      <category term="Codeup" scheme="https://pumpkinor.github.io/categories/Codeup/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>《算法笔记及上机实战指南》学习笔记</title>
