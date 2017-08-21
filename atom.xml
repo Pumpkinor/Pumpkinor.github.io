@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-08-21T07:24:30.436Z</updated>
+  <updated>2017-08-21T07:43:48.334Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -16,31 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>日期差值</title>
-    <link href="https://pumpkinor.github.io/2017/08/21/%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/"/>
-    <id>https://pumpkinor.github.io/2017/08/21/日期差值/</id>
-    <published>2017-08-21T07:24:30.000Z</published>
-    <updated>2017-08-21T07:24:30.436Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
+    <title>跟奥巴马一起编程</title>
     <link href="https://pumpkinor.github.io/2017/08/21/%E8%B7%9F%E5%A5%A5%E5%B7%B4%E9%A9%AC%E4%B8%80%E8%B5%B7%E7%BC%96%E7%A8%8B/"/>
     <id>https://pumpkinor.github.io/2017/08/21/跟奥巴马一起编程/</id>
-    <published>2017-08-21T07:24:16.907Z</published>
-    <updated>2017-08-21T07:40:12.252Z</updated>
+    <published>2017-08-21T07:43:39.000Z</published>
+    <updated>2017-08-21T07:43:48.334Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="title-跟奥巴马一起编程date-2017-08-21-15-24-16tags-categories-PAT-B-level"><a href="#title-跟奥巴马一起编程date-2017-08-21-15-24-16tags-categories-PAT-B-level" class="headerlink" title="title: 跟奥巴马一起编程date: 2017-08-21 15:24:16tags:categories: PAT B level"></a>title: 跟奥巴马一起编程date: 2017-08-21 15:24:16tags:categories: PAT B level</h4><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1036 跟奥巴马一起编程(15)</p>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1036 跟奥巴马一起编程(15)</p>
 <p>时间限制<br>400 ms<br>内存限制<br>65536 kB</p>
 <p>美国总统奥巴马不仅呼吁所有人都学习编程，甚至以身作则编写代码，成为美国历史上首位编写计算机代码的总统。2014年底，为庆祝“计算机科学教育周”正式启动，奥巴马编写了很简单的计算机代码：在屏幕上画一个正方形。现在你也跟他一起画吧！</p>
 <p>输入格式：</p>
@@ -64,7 +46,27 @@
     
     <summary type="html">
     
-      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;title-跟奥巴马一起编程date-2017-08-21-15-24-16tags-categories-PAT-B-level&quot;&gt;&lt;a href=&quot;#title
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h4 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;题目描述：&lt;/h4&gt;&lt;p&gt;PAT B103
+    
+    </summary>
+    
+      <category term="PAT B level" scheme="https://pumpkinor.github.io/categories/PAT-B-level/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>日期差值</title>
+    <link href="https://pumpkinor.github.io/2017/08/21/%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/"/>
+    <id>https://pumpkinor.github.io/2017/08/21/日期差值/</id>
+    <published>2017-08-21T07:24:30.000Z</published>
+    <updated>2017-08-21T07:24:30.436Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;
     
     </summary>
     
