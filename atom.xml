@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-08-21T08:24:25.202Z</updated>
+  <updated>2017-09-01T12:58:31.341Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Git Bush对Github进行同步</title>
+    <link href="https://pumpkinor.github.io/2017/09/01/%E4%BD%BF%E7%94%A8Git%20Bush%E5%AF%B9Github%E8%BF%9B%E8%A1%8C%E5%90%8C%E6%AD%A5/"/>
+    <id>https://pumpkinor.github.io/2017/09/01/使用Git Bush对Github进行同步/</id>
+    <published>2017-09-01T12:23:31.000Z</published>
+    <updated>2017-09-01T12:58:31.341Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="GitHub部分："><a href="#GitHub部分：" class="headerlink" title="GitHub部分："></a>GitHub部分：</h2><h4 id="1-注册GitHub账号"><a href="#1-注册GitHub账号" class="headerlink" title="1. 注册GitHub账号"></a>1. 注册GitHub账号</h4><p>step 1：打开GitHub主页<a href="https://github.com/" target="_blank" rel="external">GitHub</a></p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/github%E4%B8%BB%E9%A1%B5.png" alt="GitHub主页"></p>
+<p>step 2：填写用户名，邮箱，密码，点击Sign up for GitHub</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF1.png" alt="注册信息1"></p>
+<p>step 3：不勾选任何选项，直接点击Continue</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF2.png" alt="注册信息2"></p>
+<p>step 4：不勾选任何选项，直接点击Submit旁边的skip this step</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF3.png" alt="注册信息3"></p>
+<p>step 5：验证你的邮箱</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E9%82%AE%E4%BB%B6%E9%AA%8C%E8%AF%81.png" alt="验证邮箱"></p>
+<p>step 6：进入你的空主页</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%99%BB%E9%99%86%E5%90%8E%E4%B8%BB%E9%A1%B5.png" alt="登陆后主页"></p>
+<h4 id="2-新建一个空的项目"><a href="#2-新建一个空的项目" class="headerlink" title="2. 新建一个空的项目"></a>2. 新建一个空的项目</h4><p>step 1：点击空主页上的Start a project开始新建一个新的代码仓库</p>
+<p>step 2：只在1处填写仓库名称（自己取一个）这里我新建的代码仓库叫做code，2处是对这个仓库的描述，可以写也可以不写</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93.png" alt="新建代码仓库"></p>
+<p>step 3：点击下方的Creat repository完成新建代码仓库</p>
+<p>step 4：在代码仓库为空的情况下，会默认显示这个远程管理方式提示界面</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86%E6%8F%90%E7%A4%BA%E7%95%8C%E9%9D%A2.png" alt="提示界面"></p>
+<h2 id="Git-Bush部分："><a href="#Git-Bush部分：" class="headerlink" title="Git Bush部分："></a>Git Bush部分：</h2><h4 id="1-下载Git-Bush客户端"><a href="#1-下载Git-Bush客户端" class="headerlink" title="1.下载Git Bush客户端"></a>1.下载Git Bush客户端</h4><p>step 1：打开Git下载页<a href="https://git-scm.com/downloads" target="_blank" rel="external">Git Download</a></p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/git%E4%B8%8B%E8%BD%BD%E9%A1%B5.png" alt="Git下载页"></p>
+<p>step 2：选择对应版本进行下载，这里下载windows版本</p>
+<p>step 3：一般有32位和64位程序可供选择，这里选择64位进行下载</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/32%E4%BD%8D%E6%88%96%E8%80%8564%E4%BD%8Dgit.png" alt="版本选择"></p>
+<h4 id="2-安装Git-Bush客户端"><a href="#2-安装Git-Bush客户端" class="headerlink" title="2. 安装Git Bush客户端"></a>2. 安装Git Bush客户端</h4><p>step 1：双击安装包</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E5%AE%89%E8%A3%85%E5%8C%85.png" alt="安装"></p>
+<p>step 2：根据提示依次点击next直到完成安装，期间并不需要对任何选项做更改</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/next.png" alt="next"></p>
+<p>step 3：等待安装完成</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AD%89%E5%BE%85%E5%AE%89%E8%A3%85.png" alt="等待安装"></p>
+<p>step 4：安装完成，去掉View Release Notes前面的对勾，点击Finish</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.png" alt="安装完成"></p>
+<h4 id="3-初始化Git-Bush客户端"><a href="#3-初始化Git-Bush客户端" class="headerlink" title="3.初始化Git Bush客户端"></a>3.初始化Git Bush客户端</h4><p>step 1：在电脑里新建一个文件夹作为存放代码的位置</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9.png" alt="新建文件夹"></p>
+<p>step 2：进入这个文件夹，点击右键看到Git Bush选项，左键点击进入</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E5%8F%B3%E9%94%AE.png" alt="打开GitBush"></p>
+<p>step 3：打开Git Bush后，首先进行代码库的初始化，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/git%20init.png" alt="初始化"></p>
+<p>step 4：然后进行global参数设置，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;1174344323@qq.com&quot;//你自己的邮箱</div><div class="line">git config --global user.name &quot;nideyoonghuming&quot;//你自己的用户名</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/global%20set.png" alt="global settig"></p>
+<h4 id="4-关联本地和GitHub"><a href="#4-关联本地和GitHub" class="headerlink" title="4.关联本地和GitHub"></a>4.关联本地和GitHub</h4><p>step 1：从上面的远程管理方式提示界面复制并粘贴运行这一部分代码，用于关联本地和GitHub网站</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/nideyonghuming/code.git</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/add%20remote.png" alt="添加远程仓库"></p>
+<p>step 2：输入以下代码用以查看远程仓库设置状态，出现下图所示代码则表示设置正确</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/remote%20-v.png" alt="仓库状态"></p>
+<h4 id="5-给代码库新增以及修改代码"><a href="#5-给代码库新增以及修改代码" class="headerlink" title="5. 给代码库新增以及修改代码"></a>5. 给代码库新增以及修改代码</h4><p>直接在文件夹里新建，修改，删除之后，按照以下步骤操作即可完成对GitHub网站上的代码库进行新增以及修改操作。</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E5%AD%98%E6%94%BE%E4%BB%A3%E7%A0%81.png" alt="增加文件"></p>
+<p>step 1：将目录下的文件添加到索引中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add . (.默认所有文件，单独写文件名即选择文件添加)</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/git%20add.png" alt="添加文件"></p>
+<p>step 2：将变化提交到仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;提交描述信息&quot;</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/commit.png" alt="提交文件"></p>
+<p>step 3：将本地内容推送到GitHub仓库中,第一次时可能会要求输入用户名和密码，之后再进行此项操作则不需要重复输入用户名和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/fist%20push.png" alt="输入用户名"></p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81.png" alt="输入密码"></p>
+<p>step 4：刷新GitHub网站，即可看到你自己更新的代码</p>
+<p><img src="http://ou3525a1l.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170901205403.png" alt="刷新github"></p>
+<h4 id="Git-Bush常用代码"><a href="#Git-Bush常用代码" class="headerlink" title="Git Bush常用代码"></a>Git Bush常用代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#新建一个库</div><div class="line">$ git init </div><div class="line">#将目录下的全部文件添加到索引中</div><div class="line">git add . (.默认所有，单独写文件名即选择文件添加)                </div><div class="line">#将变化提交到仓库</div><div class="line">git commit -m &quot;提交描述信息&quot;       </div><div class="line">#添加github</div><div class="line">$git remote add origin https://github.com/xxx(仓库地址)</div><div class="line">#添加oschina</div><div class="line">$git remote add oschina https://git.oschina.net/xxxx(仓库地址)</div><div class="line">#删除远程仓库oschina</div><div class="line">$git remote rm oschina</div><div class="line">#重命名origin为github</div><div class="line">$git remote rename origin github</div><div class="line">#提交到oschina</div><div class="line">$git push oschina master(分支名)</div><div class="line">#提交到github</div><div class="line">$git push origin master(分支名)</div><div class="line">#从oschina更新</div><div class="line">$git pull oschina master</div><div class="line">#从github更新</div><div class="line">$git pull origin master</div><div class="line">#将u盘某空目录设为远程库(此时目录位于你要上传的那个库)</div><div class="line">$ git remote add myusb(这只是个别名，可以换成其他的) E:/gitfolder(远程库名)</div><div class="line">#将本地内容推送到服务端仓库中</div><div class="line">$git push myusb master</div><div class="line">#从服务端取回内容</div><div class="line">#git pull myusb master</div><div class="line">#统计.cpp格式代码行数</div><div class="line">$ find . -name &quot;*.cpp&quot; | xargs grep -v &quot;^$&quot; | wc -l</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h2 id=&quot;GitHub部分：&quot;&gt;&lt;a href=&quot;#GitHub部分：&quot; class=&quot;headerlink&quot; title=&quot;GitHub部分：&quot;&gt;&lt;/a&gt;GitHub部分：
+    
+    </summary>
+    
+      <category term="Configuration Tutorial" scheme="https://pumpkinor.github.io/categories/Configuration-Tutorial/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>《算法笔记及上机实战指南》学习笔记</title>
