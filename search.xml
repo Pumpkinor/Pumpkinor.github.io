@@ -314,8 +314,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[害死人不偿命的(3n+1)猜想]]></title>
-      <url>/2017/08/20/%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84-3n-1-%E7%8C%9C%E6%83%B3/</url>
+      <title><![CDATA[PAT B1001 害死人不偿命的(3n+1)猜想]]></title>
+      <url>/2017/08/20/PAT%20B1001%20%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84-3n-1-%E7%8C%9C%E6%83%B3/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1001 害死人不偿命的(3n+1)猜想 (15)</p>
 <p>时间限制<br>400 ms<br>内存限制<br>65536 kB</p>
 <p>卡拉兹(Callatz)猜想：</p>
