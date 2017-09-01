@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title><![CDATA[D进制的A+B]]></title>
+      <url>/2017/09/01/D%E8%BF%9B%E5%88%B6%E7%9A%84A-B/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022. D进制的A+B (20)</p>
+<p>时间限制</p>
+<p>100 ms<br>内存限制</p>
+<p>65536 kB</p>
+<p>输入两个非负10进制整数A和B(&lt;=2^30-1)，输出A+B的D (1 &lt; D &lt;= 10)进制数。</p>
+<p>输入格式：<br>输入在一行中依次给出3个整数A、B和D。</p>
+<p>输出格式：<br>输出A+B的D进制数。</p>
+<p>输入样例：123 456 8</p>
+<p>输出样例：1103</p>
+<h4 id="思路分"><a href="#思路分" class="headerlink" title="思路分"></a><strong>思路分</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h4 id="析："><a href="#析：" class="headerlink" title="析："></a><strong>析：</strong></h4><p>对题目要求的A，B的数据区间进行分析，可知A，B和A+B都在整型数据的范围-2^31到2^31-1之内。对于整数的十进制到D进制的转换，我们常规的处理办法是对这个十进制数不断地除以D取余，直到商等于0为止，然后反向书写余数即是我们所需要的D进制数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">如：10进制的53化为2进制：</div><div class="line">被除数  D进制基数   商   余数</div><div class="line">  53  /    2   =   26 …… 1</div><div class="line">  26  /    2   =   13 …… 0</div><div class="line">  13  /    2   =    6 …… 1</div><div class="line">   6  /    2   =    3 …… 0</div><div class="line">   3  /    2   =    1 …… 1</div><div class="line">   1  /    2   =    0 …… 1</div><div class="line">最后的结果是将余数反向书写：110101</div></pre></td></tr></table></figure>
+<p>值得注意的是，我们在手工计算的时候商和余数是同时计算出来的，但是在C/C++语言中，取余数 % 和求商 / 是两个单独的运算，为了能分别得到余数和商，我们应该先对被除数取余，存放到一个数组中备用（最后从这个数组输出结果的时候应该逆序输出），然后再对被除数进行除法运算，用它的商来代替它本身进行后续的运算，由于上述过程应该是一个对商不断除以D对其取余数的过程，所以我们需要用一个循环来简单模拟这个计算过程，这个循环的控制条件应该是直到商也就是最后的被除数为0时停止循环。考虑到一种特殊的情况，即我们要转换进制的十进制数是0的时候，这里的循环应该选用do……while循环而不用while循环，以保证循环至少运行一次，而非直接不执行循环。</p>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a><strong>AC代码：</strong></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> a,b,d,sum;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;d) != EOF)&#123;</div><div class="line">        sum = a + b;</div><div class="line">        <span class="keyword">int</span> z[<span class="number">31</span>],num = <span class="number">0</span>;</div><div class="line">        <span class="keyword">do</span>&#123;</div><div class="line">            <span class="comment">//十进制转化为d进制</span></div><div class="line">            z[num++] = sum % d;</div><div class="line">            <span class="comment">//z中保存的是最后的结果</span></div><div class="line">            sum /= d;</div><div class="line">        &#125;<span class="keyword">while</span>(sum != <span class="number">0</span>);</div><div class="line">        <span class="comment">//用do...while循环而不用while循环是为了考虑到sum=0的这种特殊情况</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = num - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i--)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,z[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> PAT B level </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[使用Git Bush对Github进行同步]]></title>
       <url>/2017/09/01/%E4%BD%BF%E7%94%A8Git%20Bush%E5%AF%B9Github%E8%BF%9B%E8%A1%8C%E5%90%8C%E6%AD%A5/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="GitHub部分："><a href="#GitHub部分：" class="headerlink" title="GitHub部分："></a>GitHub部分：</h2><h4 id="1-注册GitHub账号"><a href="#1-注册GitHub账号" class="headerlink" title="1. 注册GitHub账号"></a>1. 注册GitHub账号</h4><p>step 1：打开GitHub主页<a href="https://github.com/" target="_blank" rel="external">GitHub</a></p>
@@ -115,6 +143,9 @@
 </ol>
 <h5 id="3-4-日期处理"><a href="#3-4-日期处理" class="headerlink" title="3.4 日期处理:"></a>3.4 日期处理:</h5><ol>
 <li><a href="https://pumpkinor.github.io/2017/08/21/%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/">CodeUp 1928 日期差值</a></li>
+</ol>
+<h5 id="3-5-进制转换："><a href="#3-5-进制转换：" class="headerlink" title="3.5 进制转换："></a>3.5 进制转换：</h5><ol>
+<li>[PAT B1022 D进制的A+B]</li>
 </ol>
 ]]></content>
       
