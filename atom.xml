@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-09-01T12:58:31.341Z</updated>
+  <updated>2017-09-01T13:03:29.193Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://pumpkinor.github.io/2017/09/01/%E4%BD%BF%E7%94%A8Git%20Bush%E5%AF%B9Github%E8%BF%9B%E8%A1%8C%E5%90%8C%E6%AD%A5/"/>
     <id>https://pumpkinor.github.io/2017/09/01/使用Git Bush对Github进行同步/</id>
     <published>2017-09-01T12:23:31.000Z</published>
-    <updated>2017-09-01T12:58:31.341Z</updated>
+    <updated>2017-09-01T13:03:29.193Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="GitHub部分："><a href="#GitHub部分：" class="headerlink" title="GitHub部分："></a>GitHub部分：</h2><h4 id="1-注册GitHub账号"><a href="#1-注册GitHub账号" class="headerlink" title="1. 注册GitHub账号"></a>1. 注册GitHub账号</h4><p>step 1：打开GitHub主页<a href="https://github.com/" target="_blank" rel="external">GitHub</a></p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/github%E4%B8%BB%E9%A1%B5.png" alt="GitHub主页"></p>
@@ -30,8 +30,7 @@
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF2.png" alt="注册信息2"></p>
 <p>step 4：不勾选任何选项，直接点击Submit旁边的skip this step</p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF3.png" alt="注册信息3"></p>
-<p>step 5：验证你的邮箱</p>
-<p><img src="http://ou3525a1l.bkt.clouddn.com/%E9%82%AE%E4%BB%B6%E9%AA%8C%E8%AF%81.png" alt="验证邮箱"></p>
+<p>step 5：点击发送来的验证邮件中的确认链接，验证你的邮箱</p>
 <p>step 6：进入你的空主页</p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%99%BB%E9%99%86%E5%90%8E%E4%B8%BB%E9%A1%B5.png" alt="登陆后主页"></p>
 <h4 id="2-新建一个空的项目"><a href="#2-新建一个空的项目" class="headerlink" title="2. 新建一个空的项目"></a>2. 新建一个空的项目</h4><p>step 1：点击空主页上的Start a project开始新建一个新的代码仓库</p>
