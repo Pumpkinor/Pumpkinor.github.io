@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Order.of.the.Phoenix</title>
-  <subtitle>Learning and Coding</subtitle>
+  <title>Pumpkinor</title>
+  <subtitle>Learning and Coding for Order.of.the.Phoenix</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
