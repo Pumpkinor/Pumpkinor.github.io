@@ -134,12 +134,12 @@
     <link href="https://pumpkinor.github.io/2017/08/21/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://pumpkinor.github.io/2017/08/21/《算法笔记及上机实战指南》学习笔记/</id>
     <published>2017-08-21T08:23:31.000Z</published>
-    <updated>2017-09-01T14:17:18.806Z</updated>
+    <updated>2017-09-05T14:48:48.981Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>最近在跟着胡凡的《算法笔记》和配套的《上机训练实战指南》学习基本的算法。就是这两本。</p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%B0%81%E9%9D%A2.jpg" alt="算法笔记"></p>
 <p><img src="http://ou3525a1l.bkt.clouddn.com/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83%E5%B0%81%E9%9D%A2.jpg" alt="上机实战训练指南"></p>
-<p>在这里记录一下学习之中的一些心得和一些题目的解题思路，不保证最优，欢迎指正，权当备忘，因为这个博客也并没有加入百度或者谷歌的SEO，这意味着，它不会被你在搜索引擎中搜索到，唯二能够访问这个博客的可能只是从我本人这里获取地址或者从我的<a href="https://github.com/Pumpkinor/" target="_blank" rel="external">Github</a>主页上链接过来。</p>
+<p>在这里记录一下学习之中的一些心得和一些题目的解题思路，代码是C和C++的混编风格，不保证最优，欢迎指正，权当备忘，因为这个博客也并没有加入百度或者谷歌的SEO，这意味着，它不会被你在搜索引擎中搜索到，唯二能够访问这个博客的可能只是从我本人这里获取地址或者从我的<a href="https://github.com/Pumpkinor/" target="_blank" rel="external">Github</a>主页上链接过来。</p>
 <h4 id="第二章-C-C-快速入门"><a href="#第二章-C-C-快速入门" class="headerlink" title="第二章  C/C++ 快速入门"></a>第二章  C/C++ 快速入门</h4><p>这一章是对于基础的C/C++语言语法进行简略的介绍，不作为系统性的C/C++语言学习使用，只讲述与算法竞赛，在线oj相关的语法。侧重于C语言，因为C++语法在机考中多数是用不到的。</p>
 <ol>
 <li>变量类型</li>
