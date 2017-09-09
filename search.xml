@@ -165,27 +165,27 @@
 <h5 id="3-1-简单模拟："><a href="#3-1-简单模拟：" class="headerlink" title="3.1 简单模拟："></a>3.1 简单模拟：</h5><p>例题：</p>
 <ol>
 <li><a href="https://pumpkinor.github.io/2017/08/20/%E5%AE%B3%E6%AD%BB%E4%BA%BA%E4%B8%8D%E5%81%BF%E5%91%BD%E7%9A%84-3n-1-%E7%8C%9C%E6%83%B3/">PAT B1001 害死人不偿命的(3n+1)猜想</a></li>
-<li><a href="https://pumpkinor.github.io/2017/08/20/%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/">PAT B1032 挖掘机技术哪家强</a></li>
+<li><a href="https://pumpkinor.github.io/2017/08/20/PAT%20B1032%20%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/">PAT B1032 挖掘机技术哪家强</a></li>
 </ol>
 <p>练习题CodeUp 100000575：</p>
 <ol>
-<li>​</li>
+<li><a href="https://pumpkinor.github.io/2017/09/09/Codeup%20575%20A%20%E5%89%A9%E4%B8%8B%E7%9A%84%E6%A0%91/">A 剩下的树</a></li>
 </ol>
 <h5 id="3-2-查找元素："><a href="#3-2-查找元素：" class="headerlink" title="3.2 查找元素："></a>3.2 查找元素：</h5><p>例题：</p>
 <ol>
-<li><a href="https://pumpkinor.github.io/2017/08/21/%E6%89%BEx/">CodeUp 1934 找x</a></li>
+<li><a href="https://pumpkinor.github.io/2017/08/21/Codeup%201934%20%E6%89%BEx/">CodeUp 1934 找x</a></li>
 </ol>
 <h5 id="3-3-图形输出"><a href="#3-3-图形输出" class="headerlink" title="3.3 图形输出:"></a>3.3 图形输出:</h5><p>例题：</p>
 <ol>
-<li><a href="https://pumpkinor.github.io/2017/08/21/%E8%B7%9F%E5%A5%A5%E5%B7%B4%E9%A9%AC%E4%B8%80%E8%B5%B7%E7%BC%96%E7%A8%8B/">PAT B1036 跟奥巴马一起编程</a></li>
+<li><a href="https://pumpkinor.github.io/2017/08/21/PAT%20B1036%20%E8%B7%9F%E5%A5%A5%E5%B7%B4%E9%A9%AC%E4%B8%80%E8%B5%B7%E7%BC%96%E7%A8%8B/">PAT B1036 跟奥巴马一起编程</a></li>
 </ol>
 <h5 id="3-4-日期处理"><a href="#3-4-日期处理" class="headerlink" title="3.4 日期处理:"></a>3.4 日期处理:</h5><p>例题：</p>
 <ol>
-<li><a href="https://pumpkinor.github.io/2017/08/21/%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/">CodeUp 1928 日期差值</a></li>
+<li><a href="https://pumpkinor.github.io/2017/08/21/Codeup%201928%20%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/">CodeUp 1928 日期差值</a></li>
 </ol>
 <h5 id="3-5-进制转换："><a href="#3-5-进制转换：" class="headerlink" title="3.5 进制转换："></a>3.5 进制转换：</h5><p>例题：</p>
 <ol>
-<li><a href="https://pumpkinor.github.io/2017/09/01/D%E8%BF%9B%E5%88%B6%E7%9A%84A-B/">PAT B1022 D进制的A+B</a></li>
+<li><a href="https://pumpkinor.github.io/2017/09/01/PAT%20B1022.%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/">PAT B1022 D进制的A+B</a></li>
 </ol>
 ]]></content>
       
@@ -438,29 +438,6 @@
         <categories>
             
             <category> Algorithm </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/07/28/hello-world/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> others </category>
             
         </categories>
         
