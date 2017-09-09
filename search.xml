@@ -3,8 +3,40 @@
   
     
     <entry>
-      <title><![CDATA[D进制的A+B]]></title>
-      <url>/2017/09/01/D%E8%BF%9B%E5%88%B6%E7%9A%84A-B/</url>
+      <title><![CDATA[Codeup 575 A 剩下的树]]></title>
+      <url>/2017/09/09/Codeup%20575%20A%20%E5%89%A9%E4%B8%8B%E7%9A%84%E6%A0%91/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>Codeup 575 A 剩下的树</p>
+<p>时间限制: 1 Sec  内存限制: 32 MB</p>
+<p>有一个长度为整数L(1&lt;=L&lt;=10000)的马路，可以想象成数轴上长度为L的一个线段，起点是坐标原点，在每个整数坐标点有一棵树，即在0,1,2，…，L共L+1个位置上有L+1棵树。 现在要移走一些树，移走的树的区间用一对数字表示，如 100 200表示移走从100到200之间（包括端点）所有的树。 可能有M(1&lt;=M&lt;=100)个区间，区间之间可能有重叠。现在要求移走所有区间的树之后剩下的树的个数。</p>
+<p>输入</p>
+<p>两个整数L(1&lt;=L&lt;=10000)和M(1&lt;=M&lt;=100)。接下来有M组整数，每组有一对数字。</p>
+<p>输出</p>
+<p>可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。<br>样例输入</p>
+<p>4 21 20 211 21 54 70 0</p>
+<p>样例输出</p>
+<p>25</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a><strong>思路分析：</strong></h4><p>简单的模拟思想，用数组a[maxl]存储树木的状态，数组下标表示数轴上的整数坐标点，由题意可知，从0到L+1共有L+1个点，初始在每一点种上树，用数组元素1或者1来表示该坐标上有无树木，1表示该点种有树，0表示该点树被移走。<br>根据题目描述的具体思路就是：</p>
+<ul>
+<li>step 1，设立数组存放各个坐标点处的树木状态，初始化为全部种植有树即数组元素全为1，数组长度要大于10000；</li>
+<li>step 2，输入马路长度L和移走的树木的区间组数M，注意题目中提到的M组区间可能会有重合的情况，用while…break使输入是0 0的时候结束程序运行 ；</li>
+<li>step 3，每次输入一组数据表示移走的树木的坐标，将数组下标在所给区间的数组元素的值赋为0，采用改变数组元素值然后统计的方式来解决区间重合问题；</li>
+<li>step 4，在所有区间输入处理完毕之后对数组a[maxl]中1的个数进行统计，即是所求结果。</li>
+</ul>
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a><strong>AC代码：</strong></h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">10000</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> L,M,N;   </div><div class="line">    <span class="comment">//L为树的总长度，M为接下来移走树的组数，N为多点测试轮数</span></div><div class="line">    <span class="keyword">int</span> a[maxl] = &#123;<span class="number">0</span>&#125;;</div><div class="line">    <span class="comment">//a[maxl]数组用于存储树木的状态</span></div><div class="line">    <span class="comment">// 元素为1表示该下标处有树，元素为0表示该下标处树被移走了</span></div><div class="line">    <span class="keyword">int</span> c,d,k;</div><div class="line">    <span class="comment">//c,d分别表示每组的一对数字，num[maxl]用于存储所有轮测试完成后的结果</span></div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;L,&amp;M) != EOF)&#123;</div><div class="line">        <span class="keyword">if</span>(L == <span class="number">0</span> &amp;&amp; M == <span class="number">0</span>)    <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="comment">//while...break；形式的多点测试方案</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= L;i++)&#123;</div><div class="line">            a[i] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//将从0到L这L+1个点赋值为1，表示种上了树</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; M;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;c,&amp;d);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = c;j &lt;=d;j++)&#123;</div><div class="line">                a[j] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//输入M组c,d的值，将数组a的下标在c,d之间的元素赋值为0，表示移走了树</span></div><div class="line">        k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= L;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i] == <span class="number">1</span>)&#123;</div><div class="line">                k++;   </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,k);   </div><div class="line">        <span class="comment">//打印输出结果</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="https://pumpkinor.github.io/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">返回目录</a></h4>]]></content>
+      
+        <categories>
+            
+            <category> Codeup </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[PAT B1022. D进制的A+B]]></title>
+      <url>/2017/09/01/PAT%20B1022.%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022. D进制的A+B (20)</p>
 <p>时间限制</p>
 <p>100 ms<br>内存限制</p>
@@ -18,7 +50,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">如：10进制的53化为2进制：</div><div class="line">被除数  D进制基数   商   余数</div><div class="line">  53  /    2   =   26 …… 1</div><div class="line">  26  /    2   =   13 …… 0</div><div class="line">  13  /    2   =    6 …… 1</div><div class="line">   6  /    2   =    3 …… 0</div><div class="line">   3  /    2   =    1 …… 1</div><div class="line">   1  /    2   =    0 …… 1</div><div class="line">最后的结果是将余数反向书写：110101</div></pre></td></tr></table></figure>
 <p>值得注意的是，我们在手工计算的时候商和余数是同时计算出来的，但是在C/C++语言中，取余数 % 和求商 / 是两个单独的运算，为了能分别得到余数和商，我们应该先对被除数取余，存放到一个数组中备用（最后从这个数组输出结果的时候应该逆序输出），然后再对被除数进行除法运算，用它的商来代替它本身进行后续的运算，由于上述过程应该是一个对商不断除以D对其取余数的过程，所以我们需要用一个循环来简单模拟这个计算过程，这个循环的控制条件应该是直到商也就是最后的被除数为0时停止循环。考虑到一种特殊的情况，即我们要转换进制的十进制数是0的时候，这里的循环应该选用do……while循环而不用while循环，以保证循环至少运行一次，而非直接不执行循环。</p>
 <h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a><strong>AC代码：</strong></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> a,b,d,sum;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;d) != EOF)&#123;</div><div class="line">        sum = a + b;</div><div class="line">        <span class="keyword">int</span> z[<span class="number">31</span>],num = <span class="number">0</span>;</div><div class="line">        <span class="keyword">do</span>&#123;</div><div class="line">            <span class="comment">//十进制转化为d进制</span></div><div class="line">            z[num++] = sum % d;</div><div class="line">            <span class="comment">//z中保存的是最后的结果</span></div><div class="line">            sum /= d;</div><div class="line">        &#125;<span class="keyword">while</span>(sum != <span class="number">0</span>);</div><div class="line">        <span class="comment">//用do...while循环而不用while循环是为了考虑到sum=0的这种特殊情况</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = num - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i--)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,z[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
+<h4 id="返回目录"><a href="#返回目录" class="headerlink" title="返回目录"></a><a href="https://pumpkinor.github.io/2017/08/20/%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%8F%8A%E4%B8%8A%E6%9C%BA%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">返回目录</a></h4>]]></content>
       
         <categories>
             
@@ -173,8 +205,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[跟奥巴马一起编程]]></title>
-      <url>/2017/08/21/%E8%B7%9F%E5%A5%A5%E5%B7%B4%E9%A9%AC%E4%B8%80%E8%B5%B7%E7%BC%96%E7%A8%8B/</url>
+      <title><![CDATA[PAT B1036 跟奥巴马一起编程]]></title>
+      <url>/2017/08/21/PAT%20B1036%20%E8%B7%9F%E5%A5%A5%E5%B7%B4%E9%A9%AC%E4%B8%80%E8%B5%B7%E7%BC%96%E7%A8%8B/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1036 跟奥巴马一起编程(15)</p>
 <p>时间限制<br>400 ms<br>内存限制<br>65536 kB</p>
 <p>美国总统奥巴马不仅呼吁所有人都学习编程，甚至以身作则编写代码，成为美国历史上首位编写计算机代码的总统。2014年底，为庆祝“计算机科学教育周”正式启动，奥巴马编写了很简单的计算机代码：在屏幕上画一个正方形。现在你也跟他一起画吧！</p>
@@ -207,11 +239,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[日期差值]]></title>
-      <url>/2017/08/21/%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/</url>
+      <title><![CDATA[Codeup 1928 日期差值]]></title>
+      <url>/2017/08/21/Codeup%201928%20%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>Codeup 1928 日期差值</p>
 <p>时间限制 1 Sec  内存限制 32 MB</p>
-<p>题目描述</p>
 <p>有两个日期，求两个日期之间的天数，如果两个日期是连续的我们规定他们之间的天数为两天。</p>
 <p>输入</p>
 <p>有多组数据，每组数据有两行，分别表示两个日期，形式为YYYYMMDD</p>
@@ -249,8 +280,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[找x]]></title>
-      <url>/2017/08/21/%E6%89%BEx/</url>
+      <title><![CDATA[Codeup 1934 找x]]></title>
+      <url>/2017/08/21/Codeup%201934%20%E6%89%BEx/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>Codeup 1934 找x</p>
 <p>时间限制 1 Sec  内存限制 32 MB</p>
 <p>题目描述</p>
@@ -281,8 +312,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[挖掘机技术哪家强]]></title>
-      <url>/2017/08/20/%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/</url>
+      <title><![CDATA[PAT B1032 挖掘机技术哪家强]]></title>
+      <url>/2017/08/20/PAT%20B1032%20%E6%8C%96%E6%8E%98%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%93%AA%E5%AE%B6%E5%BC%BA/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1032 挖掘机技术哪家强(20)</p>
 <p>时间限制<br>200 ms<br>内存限制<br>65536 kB</p>
 <p>为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</p>
