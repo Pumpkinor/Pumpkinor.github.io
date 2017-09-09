@@ -11,7 +11,8 @@
 <p>输入</p>
 <p>两个整数L(1&lt;=L&lt;=10000)和M(1&lt;=M&lt;=100)。接下来有M组整数，每组有一对数字。</p>
 <p>输出</p>
-<p>可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。<br>样例输入</p>
+<p>可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。</p>
+<p>样例输入</p>
 <p>4 21 20 211 21 54 70 0</p>
 <p>样例输出</p>
 <p>25</p>
@@ -35,9 +36,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[PAT B1022. D进制的A+B]]></title>
-      <url>/2017/09/01/PAT%20B1022.%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022. D进制的A+B (20)</p>
+      <title><![CDATA[PAT B1022 D进制的A+B]]></title>
+      <url>/2017/09/01/PAT%20B1022%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022 D进制的A+B (20)</p>
 <p>时间限制</p>
 <p>100 ms<br>内存限制</p>
 <p>65536 kB</p>

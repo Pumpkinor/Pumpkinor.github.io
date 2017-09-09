@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2017-09-09T14:22:27.851Z</updated>
+  <updated>2017-09-09T14:34:17.549Z</updated>
   <id>https://pumpkinor.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://pumpkinor.github.io/2017/09/09/Codeup%20575%20A%20%E5%89%A9%E4%B8%8B%E7%9A%84%E6%A0%91/"/>
     <id>https://pumpkinor.github.io/2017/09/09/Codeup 575 A 剩下的树/</id>
     <published>2017-09-09T14:14:51.000Z</published>
-    <updated>2017-09-09T14:22:27.851Z</updated>
+    <updated>2017-09-09T14:34:17.549Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>Codeup 575 A 剩下的树</p>
 <p>时间限制: 1 Sec  内存限制: 32 MB</p>
@@ -28,7 +28,8 @@
 <p>输入</p>
 <p>两个整数L(1&lt;=L&lt;=10000)和M(1&lt;=M&lt;=100)。接下来有M组整数，每组有一对数字。</p>
 <p>输出</p>
-<p>可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。<br>样例输入</p>
+<p>可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。</p>
+<p>样例输入</p>
 <p>4 21 20 211 21 54 70 0</p>
 <p>样例输出</p>
 <p>25</p>
@@ -54,13 +55,13 @@
   </entry>
   
   <entry>
-    <title>PAT B1022. D进制的A+B</title>
-    <link href="https://pumpkinor.github.io/2017/09/01/PAT%20B1022.%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/"/>
-    <id>https://pumpkinor.github.io/2017/09/01/PAT B1022. D进制的A+B/</id>
+    <title>PAT B1022 D进制的A+B</title>
+    <link href="https://pumpkinor.github.io/2017/09/01/PAT%20B1022%20D%E8%BF%9B%E5%88%B6%E7%9A%84A+B/"/>
+    <id>https://pumpkinor.github.io/2017/09/01/PAT B1022 D进制的A+B/</id>
     <published>2017-09-01T14:12:00.000Z</published>
-    <updated>2017-09-09T14:23:45.645Z</updated>
+    <updated>2017-09-09T14:33:57.733Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022. D进制的A+B (20)</p>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>PAT B1022 D进制的A+B (20)</p>
 <p>时间限制</p>
 <p>100 ms<br>内存限制</p>
 <p>65536 kB</p>
