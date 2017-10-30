@@ -439,7 +439,7 @@
     
     <entry>
       <title><![CDATA[Some Classical Sorting Methods ]]></title>
-      <url>/2017/07/29/Some-Classical-Sorting-Methods/</url>
+      <url>/2017/07/29/Some-Classical-Sorting-Methods-3/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ol>
 <li><p>冒泡排序</p>
 <p>冒泡排序的实质在于交换，即多次通过比较数组相邻元素，把其中最大的一个元素移动到最右边的位置放置不管，再在剩余元素中进行同样的操作，直到剩余元素为0为止。</p>
