@@ -410,7 +410,7 @@
     <link href="https://pumpkinor.github.io/2017/08/03/%E5%9C%A8Github%E5%92%8CCoding%E4%B8%8A%E7%94%A8Hexo%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>https://pumpkinor.github.io/2017/08/03/在Github和Coding上用Hexo部署自己的静态博客/</id>
     <published>2017-08-03T00:55:00.000Z</published>
-    <updated>2018-04-28T12:09:05.335Z</updated>
+    <updated>2018-04-28T12:53:59.171Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>​    现在你所访问的这个博客就是基于Github的静态页面服务利用Hexo框架所假设的博客。</p>
 <p>​    如果你目的明确，只是为了在短时间内搭建一个博客网站，<a href="https://portablehexo.bitmoe.cn/" target="_blank" rel="external">Hexo Portable</a>很适合你。        <img src="http://ou3525a1l.bkt.clouddn.com/hexo%20portable.png" alt="Hexo Portable"></p>
