@@ -4,7 +4,7 @@
   <title><![CDATA[Pumpkinor.io]]></title>
   <link href="https://pumpkinor.github.io/atom.xml" rel="self"/>
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2021-09-06T11:34:27+08:00</updated>
+  <updated>2021-09-06T11:34:55+08:00</updated>
   <id>https://pumpkinor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -81,7 +81,6 @@ docker load -i ~/container-backup.tar
 
 
 </code></pre>
-<p><img src="media/16308976226415/16308992543073.jpg" alt="" /></p>
 
 ]]></content>
   </entry>
