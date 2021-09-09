@@ -4,13 +4,56 @@
   <title><![CDATA[Pumpkinor.io]]></title>
   <link href="https://pumpkinor.github.io/atom.xml" rel="self"/>
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2021-09-06T11:34:55+08:00</updated>
+  <updated>2021-09-09T15:46:24+08:00</updated>
   <id>https://pumpkinor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Daily Reading 2021/09/09]]></title>
+    <link href="https://pumpkinor.github.io/16311528886260.html"/>
+    <updated>2021-09-09T10:01:28+08:00</updated>
+    <id>https://pumpkinor.github.io/16311528886260.html</id>
+    <content type="html"><![CDATA[
+<h2><a id="extracts" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>extracts</h2>
+<ol>
+<li>詹姆斯认为：习惯可以帮助我们实现目标，但归根结底，它们是在帮助我们成为自己想要成为的某种人。</li>
+<li>养成习惯的过程可以分为四个步骤：提示、渴求、反应、奖励。这个四步过程是一个无止境的反馈循环：提示触发渴求，渴求激发反应，而反应则提供满足渴求的奖励。<img src="media/16311528886260/16311533472939.jpg" alt="" /></li>
+<li>根据这个习惯循环，詹姆斯总结出了培养好习惯的四大定律：
+<ul>
+<li>让习惯变得显而易见（明确自己想培养什么习惯 -- 应用「习惯叠加公式」）</li>
+<li>让习惯变得更有吸引力（提升习惯的吸引力 -- 喜好绑定 -- 在做 [ 喜欢的事情 ] 的同时，我必须开始 [ 新习惯 ] ）</li>
+<li>让习惯简便易行（当你开始培养一种新习惯时，它所用时间不应超过两分钟。）</li>
+<li>让习惯带来愉悦（把即时奖励与戒除坏习惯相结合）<img src="media/16311528886260/16311537316001.jpg" alt="" /></li>
+</ul>
+</li>
+<li>产品的微小设计能改变很多人的生活，这是我喜欢做产品的原因，也是最让我着迷的地方。</li>
+</ol>
+<h2><a id="conclusion" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>conclusion</h2>
+<pre class="line-numbers"><code class="language-plain_text">微小的改进有时候会带来很大的改变 
+培养习惯持续精进比设定目标完成目标的策略来的长期更优
+</code></pre>
+<h2><a id="thinking" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>thinking</h2>
+<pre class="line-numbers"><code class="language-plain_text">关于好习惯的养成和坏习惯的摈除都是很难做到的事情，最起码于我自己而言是这样的。
+27天还是21天养成一个习惯的这种说法固然是有道理的，但其实做起来的难度不低。
+我自己是一个经常半途而废的人，做很多事情都是这样。额外的，也还缺少了部分的自驱力，一直以来有一种状况我无法理解自己，当我为别人做一些事情的时候，会比为自己做一些事情来的更有紧迫感，倒不是觉得别人的事情会比自己的事情更重要，我想应该是觉得自己的事情，办砸了也可以轻易获得自己的原谅，而别人的事情办砸了多少处理起来会比较麻烦。
+我现在的处境不太好，状态也不太好，经济也不太好，心情也不太好。很多时候承认自己自作自受是一件很难的事情，我已经到了不得不承认的时候了，我办砸了所有的事情，所有的事情，甚至有时候会觉得，已经搞砸了自己的整个人生。
+懂得很多道理依旧过不好这一生，此刻我知道自己应该做什么，才会变得所谓的更好，是的，我依旧觉得现实和及时止损在感情和生活上是一件无法接受甚至愚蠢的事情，但这在其他人看来才是愚蠢的不是。
+及时止损，仅限于投资领域。
+终究是要活下去，并且活得更好，才有所谓的未来，才有所谓的希望。
+我不知道此刻的我想要自己成为什么样子的人，我也觉得大部分人不会知道自己想要成为什么样子的人，但尝试从小事情开始，去养成一些好的习惯，保持思考，保持想念，保持奋进，或许最终还会是过不好这一辈子，但努力过好一辈子也确实不失为是一种成功了。
+</code></pre>
+<h3><a id="reference" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>reference</h3>
+<ol>
+<li><a href="https://youzhiyouxing.cn/materials/986">https://youzhiyouxing.cn/materials/986</a></li>
+<li><a href="https://youzhiyouxing.cn/materials/937">https://youzhiyouxing.cn/materials/937</a></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux下Docker安装和基础操作]]></title>
