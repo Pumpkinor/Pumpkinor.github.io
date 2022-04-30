@@ -1,0 +1,604 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  笔记-非原创 - Pumpkinor.io
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Pumpkinor.io" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:pumpkinor.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_blank" href="about.html">About</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Pumpkinor.io</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_blank" href="about.html">About</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%AC%94%E8%AE%B0-%E9%9D%9E%E5%8E%9F%E5%88%9B.html">笔记-非原创</a></li>
+        
+            <li><a href="configuration.html">configuration</a></li>
+        
+            <li><a href="after%20read.html">after read</a></li>
+        
+            <li><a href="Memo.html">Memo</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="16512949593862.html">
+                
+                  <h1>为什么需要消息队列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2><a id="%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%9D%A5%E8%A7%A3%E5%86%B3%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>哪些问题适合使用消息队列来解决？</h2>
+<h3><a id="%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>异步处理</h3>
+<p>如处理一个秒杀请求包含了很多步骤，例如：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.风险控制；
+2.库存锁定；
+3.生成订单；
+4.短信通知；
+5.更新统计数据。
+</code></pre>
+<p>正常的处理流程是：</p>
+<pre class="line-numbers"><code class="language-plain_text">App 将请求发送给网关，依次调用上述 5 个流程，然后将结果返回给 APP。
+</code></pre>
+<p>对于这 5 个步骤来说，能否决定秒杀成功，实际上只有<strong>风险控制</strong>和<strong>库存锁定</strong>这 2 个步骤。只要用户的秒杀请求通过风险控制，并在服务端完成库存锁定，就可以给用户返回秒杀结果了，对于后续的生成订单、短信通知和更新统计数据等步骤，并不一定要在秒杀请求中处理完成。<em>（如果后续的步骤失败了怎么办？）</em></p>
+<p>所以当服务端完成前面 2 个步骤，确定本次请求的秒杀结果后，就可以马上给用户返回响应，然后把请求的数据放入消息队列中，由消息队列异步地进行后续的操作。<br />
+<img src="http://pumpkinor-blog.oss-cn-shanghai.aliyuncs.com/2022/04/30/16512961916882.jpg" alt="16512961916882" /></p>
+<p>可以看到，在这个场景中，消息队列被用于实现服务的异步处理。</p>
+<p>这样做的好处是：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.可以更快地返回结果；
+2.减少等待，自然实现了步骤之间的并发，提升系统总体的性能。
+</code></pre>
+<h3><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制</h3>
+<p>如何避免过多的请求压垮我们的秒杀系统？</p>
+<p>一个设计健壮的程序有自我保护的能力，也就是说，它应该可以在海量的请求下，还能在自身能力范围内尽可能多地处理请求，拒绝处理不了的请求并且保证自身运行正常。不幸的是，现实中很多程序并没有那么“健壮”，而直接拒绝请求返回错误对于用户来说也是不怎么好的体验。</p>
+<p>因此，我们需要设计一套足够健壮的架构来将后端的服务保护起来。</p>
+<p>我们的设计思路是，使用消息队列隔离网关和后端服务，以达到流量控制和保护后端服务的目的。加入消息队列后，整个秒杀流程变为：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.网关在收到请求后，将请求放入请求消息队列；
+2.后端服务从请求消息队列中获取 APP 请求，完成后续秒杀处理过程，然后返回结果。
+</code></pre>
+<p><img src="http://pumpkinor-blog.oss-cn-shanghai.aliyuncs.com/2022/04/30/16512976355476.jpg" alt="16512976355476" /><br />
+问题。问题。<br />
+秒杀开始后，当短时间内大量的秒杀请求到达网关时，不会直接冲击到后端的秒杀服务，而是先堆积在消息队列中，后端服务按照自己的最大处理能力，从消息队列中消费请求进行处理。</p>
+<p>对于超时的请求可以直接丢弃，APP 将超时无响应的请求处理为秒杀失败即可。</p>
+<p>运维人员还可以随时增加秒杀服务的实例数量进行水平扩容，而不用对系统的其他部分做任何更改。</p>
+<p>这种设计的优点是：</p>
+<pre class="line-numbers"><code class="language-plain_text">能根据下游的处理能力自动调节流量，达到“削峰填谷”的作用。
+</code></pre>
+<p>但这样做同样是有代价的：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.增加了系统调用链环节，导致总体的响应时延变长。
+2.上下游系统都要将同步调用改为异步消息，增加了系统的复杂度。
+</code></pre>
+<p>那还有没有更简单一点儿的流量控制方法呢？</p>
+<p>如果我们能预估出秒杀服务的处理能力，就可以用消息队列实现一个令牌桶，更简单地进行流量控制。</p>
+<p>令牌桶控制流量的原理是：</p>
+<pre class="line-numbers"><code class="language-plain_text">单位时间内只发放固定数量的令牌到令牌桶中，规定服务在处理请求之前必须先从令牌桶中拿出一个令牌，如果令牌桶中没有令牌，则拒绝请求。这样就保证单位时间内，能处理的请求不超过发放令牌的数量，起到了流量控制的作用。
+</code></pre>
+<p>实现的方式也很简单，不需要破坏原有的调用链，只要网关在处理 APP 请求时增加一个获取令牌的逻辑。</p>
+<p>令牌桶可以简单地用一个有固定容量的消息队列加一个“令牌发生器”来实现：</p>
+<pre class="line-numbers"><code class="language-plain_text">令牌发生器按照预估的处理能力，匀速生产令牌并放入令牌队列（如果队列满了则丢弃令牌），网关在收到请求时去令牌队列消费一个令牌，获取到令牌则继续调用后端秒杀服务，如果获取不到令牌则直接返回秒杀失败。
+</code></pre>
+<p><img src="http://pumpkinor-blog.oss-cn-shanghai.aliyuncs.com/2022/04/30/16512977894140.jpg" alt="16512977894140" /></p>
+<h3><a id="%E6%9C%8D%E5%8A%A1%E8%A7%A3%E8%80%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务解耦</h3>
+<p>消息队列的另外一个作用，就是实现系统应用之间的解耦。<br />
+再举一个电商的例子来说明解耦的作用和必要性。我们知道订单是电商系统中比较核心的数据，当一个新订单创建时：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.支付系统需要发起支付流程；
+2.风控系统需要审核订单的合法性；
+3.客服系统需要给用户发短信告知用户；
+4.经营分析系统需要更新统计数据；……
+</code></pre>
+<p>这些订单下游的系统都需要实时获得订单数据。随着业务不断发展，这些订单下游系统不断的增加，不断变化，并且每个系统可能只需要订单数据的一个子集，负责订单服务的开发团队不得不花费很大的精力，应对不断增加变化的下游系统，不停地修改调试订单系统与这些下游系统的接口。任何一个下游系统接口变更，都需要订单模块重新进行一次上线，对于一个电商的核心服务来说，这几乎是不可接受的。</p>
+<p>所有的电商都选择用消息队列来解决类似的系统耦合过于紧密的问题。引入消息队列后，订单服务在订单变化时发送一条消息到消息队列的一个主题 Order 中，所有下游系统都订阅主题 Order，这样每个下游系统都可以获得一份实时完整的订单数据。无论增加、减少下游系统或是下游系统需求如何变化，订单服务都无需做任何更改，实现了订单服务与下游服务的解耦。</p>
+<h3><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
+<p>消息队列最常被使用的三种场景：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.异步处理
+2.流量控制
+3.服务解耦。
+</code></pre>
+<p>当然，消息队列的适用范围不仅仅局限于这些场景，还有包括：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.作为发布 / 订阅系统实现一个微服务级系统间的观察者模式；
+2.连接流计算任务和数据；
+3.用于将消息广播给大量接收者。
+</code></pre>
+<p>简单的说，我们在单体应用里面需要用队列解决的问题，在分布式系统中大多都可以用消息队列来解决。同时我们也要认识到，消息队列也有它自身的一些问题和局限性，包括：</p>
+<pre class="line-numbers"><code class="language-plain_text">1.引入消息队列带来的延迟问题；
+2.增加了系统的复杂度；
+3.可能产生数据不一致的问题。
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2022/04/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.html'>消息队列</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="笔记-非原创_1.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Pumpkinor.io</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/Pumpkinor" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:pumpkinor@163.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%AC%94%E8%AE%B0-%E9%9D%9E%E5%8E%9F%E5%88%9B.html"><strong>笔记-非原创</strong></a>
+        
+            <a href="configuration.html"><strong>configuration</strong></a>
+        
+            <a href="after%20read.html"><strong>after read</strong></a>
+        
+            <a href="Memo.html"><strong>Memo</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">为什么需要消息队列</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512948238106.html"></a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16381018403104.html">2021/11/28 算法学习开始</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16356092078092.html">异步处理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16355083181390.html">生产就绪前要做的工作</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>
