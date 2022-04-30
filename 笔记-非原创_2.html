@@ -108,21 +108,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16356092078092.html">
+                <a class="clearlink" href="16381018403104.html">
                 
-                  <h1>异步处理</h1>
+                  <h1>2021/11/28 算法学习开始</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
-<p>在使用异步处理这种架构模式的时候，我们一般都会使用 MQ 中间件配合实现异步流程，需要重点考虑四个方面的问题：</p>
-<ol>
-<li>要考虑异步流程丢消息或处理中断的情况，异步流程需要有备线进行补偿。比如，我们今天介绍的全量补偿方式，即便异步流程彻底失效，通过补偿也能让业务继续进行。</li>
-<li>异步处理的时候需要考虑消息重复的可能性，处理逻辑需要实现幂等，防止重复处理。</li>
-<li>微服务场景下不同服务多个实例监听消息的情况，一般不同服务需要同时收到相同的消息，而相同服务的多个实例只需要轮询接收消息。我们需要确认 MQ 的消息路由配置是否满足需求，以避免消息重复或漏发问题。</li>
-<li>要注意始终无法处理的死信消息，可能会引发堵塞 MQ 的问题。一般在遇到消息处理失败的时候，我们可以设置一定的重试策略。如果重试还是不行，那可以把这个消息扔到专有的死信队列特别处理，不要让死信影响到正常消息的处理。</li>
-</ol>
+                        	<pre class="line-numbers"><code class="language-plain_text">本次主要是学习基本的数据结构与算法 
+</code></pre>
 
                         
                       </div>
@@ -131,10 +125,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2021/10/30</span>
+                    <span class="date">2021/11/28</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Java%20Mistake%20100.html'>Java Mistake 100</a></span>
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95.html'>数据结构和算法</a></span>
           				   
                     
 
@@ -224,7 +218,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16512949593862.html">为什么需要消息队列</a>
+			        <a href="16512991592673.html">消息队列的技术选型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">哪些问题适合使用消息队列来解决</a>
 			      </li>
 		     
 		  
@@ -243,12 +243,6 @@
 		      
 			      <li class="post">
 			        <a href="16356092078092.html">异步处理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16355083181390.html">生产就绪前要做的工作</a>
 			      </li>
 		     
 		  

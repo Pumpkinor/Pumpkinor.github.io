@@ -108,20 +108,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16353485210513.html">
+                <a class="clearlink" href="16353486561713.html">
                 
-                  <h1>Spring中的IOC和AOP</h1>
+                  <h1>Spring 框架给业务代码带来的复杂度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
-<p>Spring IoC 和 AOP 三个比较容易出错的点：</p>
-<ol>
-<li>让 Spring 容器管理对象，要考虑对象默认的 Scope 单例是否适合，对于有状态的类型，单例可能产生内存泄露问题。</li>
-<li>如果要为单例的 Bean 注入 Prototype 的 Bean，绝不是仅仅修改 Scope 属性这么简单。由于单例的 Bean 在容器启动时就会完成一次性初始化。最简单的解决方案是，把 Prototype 的 Bean 设置为通过代理注入，也就是设置 proxyMode 属性为 TARGET_CLASS。</li>
-<li>如果一组相同类型的 Bean 是有顺序的，需要明确使用 @Order 注解来设置顺序。你可以再回顾下，两个不同优先级切面中 @Before、@After 和 @Around 三种增强的执行顺序，是什么样的。</li>
-</ol>
+<p>对于 AOP 切 Feign 的案例，我们在实现功能时走了一些弯路。Spring Cloud 会使用 Spring Boot 的特性，根据当前引入包的情况做各种自动装配。如果我们要扩展 Spring 的组件，那么只有清晰了解 Spring 自动装配的运作方式，才能鉴别运行时对象在 Spring 容器中的情况，不能想当然认为代码中能看到的所有 Spring 的类都是 Bean。<br />
+对于配置优先级的案例，分析配置源优先级时，如果我们以为看到PropertySourcesPropertyResolver 就看到了真相，后续进行扩展开发时就可能会踩坑。我们一定要注意，分析 Spring 源码时，你看到的表象不一定是实际运行时的情况，还需要借助日志或调试工具来理清整个过程。如果没有调试工具，你可以借助第 11 讲用到的 Arthas，来分析代码调用路径。</p>
 
                         
                       </div>
@@ -223,7 +219,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16512949593862.html">为什么需要消息队列</a>
+			        <a href="16512991592673.html">消息队列的技术选型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">哪些问题适合使用消息队列来解决</a>
 			      </li>
 		     
 		  
@@ -242,12 +244,6 @@
 		      
 			      <li class="post">
 			        <a href="16356092078092.html">异步处理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16355083181390.html">生产就绪前要做的工作</a>
 			      </li>
 		     
 		  

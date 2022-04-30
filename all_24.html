@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Java Mistake 100 - Pumpkinor.io
+  Pumpkinor.io
   
   </title>
   
@@ -108,22 +108,76 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16345661698040.html">
+                <a class="clearlink" href="16308976226415.html">
                 
-                  <h1>线程，并发工具类和容器以及锁</h1>
+                  <h1>Linux下Docker安装和基础操作</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3><a id="threadlocal" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ThreadLocal</h3>
-<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
-<p>ThreadLocal 适用于变量在线程间隔离，而在方法或类间共享的场景。如果用户信息的获取比较昂贵（比如从数据库查询用户信息），那么在 ThreadLocal 中缓存数据是比较合适的做法。</p>
-<p>程序运行在 Tomcat 中时，执行程序的线程是 Tomcat 的工作线程，而 Tomcat 的工作线程是基于线程池的。顾名思义，线程池会重用固定的几个线程，一旦线程重用，那么很可能首次从ThreadLocal 获取的值是之前其他用户的请求遗留的值。这时，ThreadLocal 中的用户信息就是其他用户的信息。</p>
-<h4><a id="%E7%AC%94%E8%AE%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>笔记</h4>
-<p>写代码首先要考虑的是业务需求，其次就是基础的系统架构和运行时环境，知道自己写的代码将会运行在什么操作系统，什么容器，会在哪个具体的线程中执行，会让你对自己的代码有着更清晰的认识，避免诸多难以排查的bug产生。</p>
-<h4><a id="%E6%B3%A8%E6%84%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>注意</h4>
-<p>在写代码的时候，要显式对变量进行初始化和对共享变量的使用完成之后的数据清楚工作，即便这样的操作在某些时候看起来十分的不必要。</p>
-<p>当你使用一个新的容器或者工具类的时候，一定要首先去研读文档，运行demo，最好查看一下源码，不能凭着自己的印象或者一个对其功能特性的简单描述就去直接使用，当你对一个工具的用法不够清晰的时候，很容易在使用的过程中给自己埋雷。</p>
+                        	<h2><a id="%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在线安装Docker</h2>
+<p>使用官方在线安装脚本</p>
+<pre class="line-numbers"><code class="language-plain_text">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
+<p>国内第三方安装脚本</p>
+<pre class="line-numbers"><code class="language-plain_text">curl -sSL https://get.daocloud.io/docker | sh
+</code></pre>
+<h2><a id="%E6%89%8B%E5%8A%A8%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>手动离线安装Docker</h2>
+<h2><a id="%E5%8D%B8%E8%BD%BDdocker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>卸载 docker</h2>
+<p>删除安装包：</p>
+<pre class="line-numbers"><code class="language-plain_text">yum remove docker-ce
+</code></pre>
+<p>删除镜像、容器、配置文件等内容：</p>
+<pre class="line-numbers"><code class="language-plain_text">rm -rf /var/lib/docker
+</code></pre>
+<h2><a id="docker%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker的基础用法</h2>
+<pre class="line-numbers"><code class="language-shell">查看版本号
+docker -v
+查看正在运行docker进程
+docker ps -a
+查看本地已有镜像
+docker images
+在线镜像关键字搜索
+docker search iamgename
+example：docker search mysql
+在线拉取docker镜像（获取最新版）
+docker pull iamgename
+example：docker pull mysql
+后台启动一个容器
+docker run -itd --name ubuntu-test ubuntu /bin/bash
+-i: 交互式操作。
+-t: 终端。
+-d: 后台启动
+停止一个容器
+docker stop &lt;容器 ID&gt;
+对于已经启动过的容器  可以直接启动
+docker start &lt;容器 ID&gt;
+进入一个后台运行的容器可以使用下面两个命令
+docker attach &lt;容器 ID&gt;
+docker exec -it &lt;容器 ID&gt; /bin/bash
+推荐大家使用 docker exec 命令，因为此退出容器终端，不会导致容器的停止。
+删除容器
+docker rm -f &lt;容器 ID&gt;
+导出容器
+docker export &lt;容器 ID&gt; &gt; 文件名.tar
+导入容器
+cat docker/文件名.tar | docker import - 仓库名:tag名
+运行应用
+docker run -d -p 5000:5000 imagename 应用执行命令
+-d: 后台运行
+-p: 指定端口映射
+获取容器的标准输出流日志
+docker logs -f  &lt;容器 ID&gt; 
+查看 Docker 的底层信息
+docker inspect imagename
+删除image
+docker rmi 镜像id/tag名
+
+docker save -o ~/container-backup.tar container-backup
+docker load -i ~/container-backup.tar
+
+
+</code></pre>
 
                         
                       </div>
@@ -132,10 +186,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2021/10/18</span>
+                    <span class="date">2021/09/06</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Java%20Mistake%20100.html'>Java Mistake 100</a></span>
+          					    <span class="posted-in"><a href='configuration.html'>configuration</a></span>
           				   
                     
 
@@ -156,7 +210,7 @@
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   <a href="Java Mistake 100_16.html">&laquo; Prev Page</a>  
+			   <a href="all_23.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">

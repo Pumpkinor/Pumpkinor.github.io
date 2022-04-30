@@ -108,76 +108,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16338490223613.html">
+                <a class="clearlink" href="16345661698040.html">
                 
-                  <h1>Html中的特殊符号</h1>
+                  <h1>线程，并发工具类和容器以及锁</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在 HTML 文档中，有些符号拥有特殊的含义，可直接写出这些符号，以便浏览器在解释执行的时候，按照其特殊含义进行解释。<br />
-如果希望在页面上显示这些特殊符号，则需要在 HTML 文档中使用对应的代码标识，这些代码标识被称为字符实体。一个字符实体由三个部分组成，分别是“&amp;”符号、实体名称和“;”符合。表 1.4 列出了一些常用的特殊符号对应的字符实体。</p>
-<table>
-<thead>
-<tr>
-<th>html</th>
-<th>显示结果</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt;</td>
-<td>&lt;</td>
-<td>小于号或显示标记</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>&gt;</td>
-<td>大于号或显示标记</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>&amp;</td>
-<td>可用于显示其它特殊字符</td>
-</tr>
-<tr>
-<td>&quot;</td>
-<td>“</td>
-<td>引号</td>
-</tr>
-<tr>
-<td>®</td>
-<td>®</td>
-<td>已注册</td>
-</tr>
-<tr>
-<td>©</td>
-<td>©</td>
-<td>版权</td>
-</tr>
-<tr>
-<td>™</td>
-<td>™</td>
-<td>商标</td>
-</tr>
-<tr>
-<td> </td>
-<td></td>
-<td>半个空白位</td>
-</tr>
-<tr>
-<td> </td>
-<td></td>
-<td>一个空白位</td>
-</tr>
-<tr>
-<td> </td>
-<td></td>
-<td>不断行的空白</td>
-</tr>
-</tbody>
-</table>
+                        	<h3><a id="threadlocal" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>ThreadLocal</h3>
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>ThreadLocal 适用于变量在线程间隔离，而在方法或类间共享的场景。如果用户信息的获取比较昂贵（比如从数据库查询用户信息），那么在 ThreadLocal 中缓存数据是比较合适的做法。</p>
+<p>程序运行在 Tomcat 中时，执行程序的线程是 Tomcat 的工作线程，而 Tomcat 的工作线程是基于线程池的。顾名思义，线程池会重用固定的几个线程，一旦线程重用，那么很可能首次从ThreadLocal 获取的值是之前其他用户的请求遗留的值。这时，ThreadLocal 中的用户信息就是其他用户的信息。</p>
+<h4><a id="%E7%AC%94%E8%AE%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>笔记</h4>
+<p>写代码首先要考虑的是业务需求，其次就是基础的系统架构和运行时环境，知道自己写的代码将会运行在什么操作系统，什么容器，会在哪个具体的线程中执行，会让你对自己的代码有着更清晰的认识，避免诸多难以排查的bug产生。</p>
+<h4><a id="%E6%B3%A8%E6%84%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>注意</h4>
+<p>在写代码的时候，要显式对变量进行初始化和对共享变量的使用完成之后的数据清楚工作，即便这样的操作在某些时候看起来十分的不必要。</p>
+<p>当你使用一个新的容器或者工具类的时候，一定要首先去研读文档，运行demo，最好查看一下源码，不能凭着自己的印象或者一个对其功能特性的简单描述就去直接使用，当你对一个工具的用法不够清晰的时候，很容易在使用的过程中给自己埋雷。</p>
 
                         
                       </div>
@@ -186,10 +132,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2021/10/10</span>
+                    <span class="date">2021/10/18</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Memo.html'>Memo</a></span>
+          					    <span class="posted-in"><a href='Java%20Mistake%20100.html'>Java Mistake 100</a></span>
           				   
                     
 
@@ -279,7 +225,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16512949593862.html">为什么需要消息队列</a>
+			        <a href="16512991592673.html">消息队列的技术选型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">哪些问题适合使用消息队列来解决</a>
 			      </li>
 		     
 		  
@@ -298,12 +250,6 @@
 		      
 			      <li class="post">
 			        <a href="16356092078092.html">异步处理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16355083181390.html">生产就绪前要做的工作</a>
 			      </li>
 		     
 		  

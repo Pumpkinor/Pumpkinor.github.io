@@ -108,20 +108,17 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16348300291442.html">
+                <a class="clearlink" href="16348300798689.html">
                 
-                  <h1>数据库索引</h1>
+                  <h1>关于相等的判断</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
-<p>关于索引的两个误区。</p>
-<ol>
-<li>考虑到索引的维护代价、空间占用和查询时回表的代价，不能认为索引越多越好。索引一定是按需创建的，并且要尽可能确保足够轻量。一旦创建了多字段的联合索引，我们要考虑尽可能利用索引本身完成数据查询，减少回表的成本。</li>
-<li>不能认为建了索引就一定有效，对于后缀的匹配查询、查询中不包含联合索引的第一列、查询条件涉及函数计算等情况无法使用索引。此外，即使 SQL 本身符合索引的使用条件，MySQL 也会通过评估各种查询方式的代价，来决定是否走索引，以及走哪个索引。</li>
-</ol>
-<p>因此，在尝试通过索引进行 SQL 性能优化的时候，务必通过执行计划或实际的效果来确认索引是否能有效改善性能问题，否则增加了索引不但没解决性能问题，还增加了数据库增删改的负担。如果对 EXPLAIN 给出的执行计划有疑问的话，你还可以利用 optimizer_trace 查看详细的执行计划做进一步分析。</p>
+<p>首先，我们要注意 equals 和 == 的区别。业务代码中进行内容的比较，针对基本类型只能使用 ==，针对 Integer、String 在内的引用类型，需要使用 equals。Integer 和 String 的坑在于，使用 == 判等有时也能获得正确结果。<br />
+其次，对于自定义类型，如果类型需要参与判等，那么务必同时实现 equals 和 hashCode 方法，并确保逻辑一致。<br />
+如果希望快速实现 equals、hashCode 方法，我们可以借助 IDE 的代码生成功能，或使用 Lombok 来生成。如果类型也要参与比较，那么 compareTo 方法的逻辑同样需要和 equals、hashCode 方法一致。最后，Lombok 的 @EqualsAndHashCode 注解实现 equals 和 hashCode 的时候，默认使用类型所有非 static、非 transient 的字段，且不考虑父类。如果希望改变这种默认行为，可以使用 @EqualsAndHashCode.Exclude 排除一些字段，并设置 callSuper = true 来让子类的 equals 和 hashCode 调用父类的相应方法。</p>
 
                         
                       </div>
@@ -223,7 +220,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16512949593862.html">为什么需要消息队列</a>
+			        <a href="16512991592673.html">消息队列的技术选型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">哪些问题适合使用消息队列来解决</a>
 			      </li>
 		     
 		  
@@ -242,12 +245,6 @@
 		      
 			      <li class="post">
 			        <a href="16356092078092.html">异步处理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16355083181390.html">生产就绪前要做的工作</a>
 			      </li>
 		     
 		  

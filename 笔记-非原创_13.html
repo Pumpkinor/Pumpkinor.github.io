@@ -108,21 +108,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16349120420894.html">
+                <a class="clearlink" href="16351758138770.html">
                 
-                  <h1>List操作中的常见问题</h1>
+                  <h1>序列化</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
-<p>List列表相关的错误案例：</p>
+                        	<p>序列化和反序列化时需要避开的几个坑：</p>
 <ol>
-<li>想当然认为，Arrays.asList 和 List.subList 得到的 List 是普通的、独立的 ArrayList，在使用时出现各种奇怪的问题。Arrays.asList 得到的是 Arrays 的内部类 ArrayList，List.subList 得到的是 ArrayList 的内部类 SubList，不能把这两个内部类转换为 ArrayList 使用。Arrays.asList 直接使用了原始数组，可以认为是共享“存储”，而且不支持增删元素；List.subList 直接引用了原始的 List，也可以认为是共享“存储”，而且对原始 List 直接进行结构性修改会导致 SubList 出现异常。对 Arrays.asList 和 List.subList 容易忽略的是，新的 List 持有了原始数据的引用，可能会导致原始数据也无法 GC 的问题，最终导致 OOM。</li>
-<li>想当然认为，Arrays.asList 一定可以把所有数组转换为正确的 List。当传入基本类型数组的时候，List 的元素是数组本身，而不是数组中的元素。</li>
-<li>想当然认为，内存中任何集合的搜索都是很快的，结果在搜索超大 ArrayList 的时候遇到性能问题。我们考虑利用 HashMap 哈希表随机查找的时间复杂度为 O(1) 这个特性来优化性能，不过也要考虑 HashMap 存储空间上的代价，要平衡时间和空间。</li>
-<li>想当然认为，链表适合元素增删的场景，选用 LinkedList 作为数据结构。在真实场景中读写增删一般是平衡的，而且增删不可能只是对头尾对象进行操作，可能在 90% 的情况下都得不到性能增益，建议使用之前通过性能测试评估一下。</li>
+<li>要确保序列化和反序列化算法的一致性。因为，不同序列化算法输出必定不同，要正确处理序列化后的数据就要使用相同的反序列化算法。</li>
+<li>Jackson 有大量的序列化和反序列化特性，可以用来微调序列化和反序列化的细节。需要注意的是，如果自定义 ObjectMapper 的 Bean，小心不要和 Spring Boot 自动配置的 Bean 冲突。</li>
+<li>在调试序列化反序列化问题时，我们一定要捋清楚三点：是哪个组件在做序列化反序列化、整个过程有几次序列化反序列化，以及目前到底是序列化还是反序列化。</li>
+<li>对于反序列化默认情况下，框架调用的是无参构造方法，如果要调用自定义的有参构造方法，那么需要告知框架如何调用。更合理的方式是，对于需要序列化的 POJO 考虑尽量不要自定义构造方法。</li>
+<li>枚举不建议定义在 DTO 中跨服务传输，因为会有版本问题，并且涉及序列化反序列化时会很复杂，容易出错。因此，我只建议在程序内部使用枚举。</li>
 </ol>
+<p>最后还有一点需要注意，如果需要跨平台使用序列化的数据，那么除了两端使用的算法要一致外，还可能会遇到不同语言对数据类型的兼容问题。这，也是经常踩坑的一个地方。如果你有相关需求，可以多做实验、多测试。</p>
 
                         
                       </div>
@@ -131,7 +132,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2021/10/22</span>
+                    <span class="date">2021/10/25</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Java%20Mistake%20100.html'>Java Mistake 100</a></span>
@@ -224,7 +225,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="16512949593862.html">为什么需要消息队列</a>
+			        <a href="16512991592673.html">消息队列的技术选型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16512949593862.html">哪些问题适合使用消息队列来解决</a>
 			      </li>
 		     
 		  
@@ -243,12 +250,6 @@
 		      
 			      <li class="post">
 			        <a href="16356092078092.html">异步处理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="16355083181390.html">生产就绪前要做的工作</a>
 			      </li>
 		     
 		  
