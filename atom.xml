@@ -4,7 +4,7 @@
   <title><![CDATA[Pumpkinor.io]]></title>
   <link href="https://pumpkinor.github.io/atom.xml" rel="self"/>
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2022-04-30T13:58:17+08:00</updated>
+  <updated>2022-04-30T14:03:25+08:00</updated>
   <id>https://pumpkinor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -61,11 +61,15 @@
 <p>那还有没有更简单一点儿的流量控制方法呢？</p>
 <p>如果我们能预估出秒杀服务的处理能力，就可以用消息队列实现一个令牌桶，更简单地进行流量控制。</p>
 <p>令牌桶控制流量的原理是：</p>
-<pre class="line-numbers"><code class="language-plain_text">单位时间内只发放固定数量的令牌到令牌桶中，规定服务在处理请求之前必须先从令牌桶中拿出一个令牌，如果令牌桶中没有令牌，则拒绝请求。这样就保证单位时间内，能处理的请求不超过发放令牌的数量，起到了流量控制的作用。
+<pre class="line-numbers"><code class="language-plain_text">单位时间内只发放固定数量的令牌到令牌桶中，规定服务在处理请求之前必须先从令牌桶中拿出一个
+令牌，如果令牌桶中没有令牌，则拒绝请求。这样就保证单位时间内，能处理的请求不超过发放令牌
+的数量，起到了流量控制的作用。
 </code></pre>
 <p>实现的方式也很简单，不需要破坏原有的调用链，只要网关在处理 APP 请求时增加一个获取令牌的逻辑。</p>
 <p>令牌桶可以简单地用一个有固定容量的消息队列加一个“令牌发生器”来实现：</p>
-<pre class="line-numbers"><code class="language-plain_text">令牌发生器按照预估的处理能力，匀速生产令牌并放入令牌队列（如果队列满了则丢弃令牌），网关在收到请求时去令牌队列消费一个令牌，获取到令牌则继续调用后端秒杀服务，如果获取不到令牌则直接返回秒杀失败。
+<pre class="line-numbers"><code class="language-plain_text">令牌发生器按照预估的处理能力，匀速生产令牌并放入令牌队列（如果队列满了则丢弃令牌），网关
+在收到请求时去令牌队列消费一个令牌，获取到令牌则继续调用后端秒杀服务，如果获取不到令牌则
+直接返回秒杀失败。
 </code></pre>
 <p><img src="http://pumpkinor-blog.oss-cn-shanghai.aliyuncs.com/2022/04/30/16512977894140.jpg" alt="16512977894140" /></p>
 <h3><a id="%E6%9C%8D%E5%8A%A1%E8%A7%A3%E8%80%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务解耦</h3>
@@ -85,7 +89,8 @@
 3.服务解耦。
 </code></pre>
 <p>当然，消息队列的适用范围不仅仅局限于这些场景，还有包括：</p>
-<pre class="line-numbers"><code class="language-plain_text">1.作为发布 / 订阅系统实现一个微服务级系统间的观察者模式；
+<pre class="line-numbers"><code class="language-plain_text">1.作为发布 / 订阅系统实现一个微服务级
+系统间的观察者模式；
 2.连接流计算任务和数据；
 3.用于将消息广播给大量接收者。
 </code></pre>
