@@ -4,7 +4,7 @@
   <title><![CDATA[Pumpkinor.io]]></title>
   <link href="https://pumpkinor.github.io/atom.xml" rel="self"/>
   <link href="https://pumpkinor.github.io/"/>
-  <updated>2021-09-09T15:50:21+08:00</updated>
+  <updated>2022-04-30T13:38:31+08:00</updated>
   <id>https://pumpkinor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,123 +13,358 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[Daily Reading 2021/09/09]]></title>
-    <link href="https://pumpkinor.github.io/16311528886260.html"/>
-    <updated>2021-09-09T10:01:28+08:00</updated>
-    <id>https://pumpkinor.github.io/16311528886260.html</id>
+    <title type="html"><![CDATA[为什么需要消息队列]]></title>
+    <link href="https://pumpkinor.github.io/16512949593862.html"/>
+    <updated>2022-04-30T13:02:39+08:00</updated>
+    <id>https://pumpkinor.github.io/16512949593862.html</id>
     <content type="html"><![CDATA[
-<h2><a id="extracts" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>extracts</h2>
+<h2><a id="%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%9D%A5%E8%A7%A3%E5%86%B3%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>哪些问题适合使用消息队列来解决？</h2>
+<h3><a id="%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>异步处理</h3>
+<p>如处理一个秒杀请求包含了很多步骤，例如：</p>
+<pre class="line-numbers"><code class="language-plain_text">风险控制；库存锁定；生成订单；短信通知；更新统计数据。
+</code></pre>
+<p>正常的处理流程是：</p>
+<pre class="line-numbers"><code class="language-plain_text">App 将请求发送给网关，依次调用上述 5 个流程，然后将结果返回给 APP。
+</code></pre>
+<p>对于这 5 个步骤来说，能否决定秒杀成功，实际上只有<strong>风险控制</strong>和<strong>库存锁定</strong>这 2 个步骤。只要用户的秒杀请求通过风险控制，并在服务端完成库存锁定，就可以给用户返回秒杀结果了，对于后续的生成订单、短信通知和更新统计数据等步骤，并不一定要在秒杀请求中处理完成。<em>（如果后续的步骤失败了怎么办？）</em></p>
+<p>所以当服务端完成前面 2 个步骤，确定本次请求的秒杀结果后，就可以马上给用户返回响应，然后把请求的数据放入消息队列中，由消息队列异步地进行后续的操作。
+<img src="http://pumpkinor-blog.oss-cn-shanghai.aliyuncs.com/2022/04/30/16512961916882.jpg" alt="16512961916882" /></p>
+<p>可以看到，在这个场景中，消息队列被用于实现服务的异步处理。</p>
+<p>这样做的好处是：</p>
+<pre class="line-numbers"><code class="language-plain_text">可以更快地返回结果；
+减少等待，自然实现了步骤之间的并发，提升系统总体的性能。
+</code></pre>
+<h3><a id="%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流量控制</h3>
+<h3><a id="%E6%9C%8D%E5%8A%A1%E8%A7%A3%E8%80%A6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务解耦</h3>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[]]></title>
+    <link href="https://pumpkinor.github.io/16512948238106.html"/>
+    <updated>2022-04-30T13:00:23+08:00</updated>
+    <id>https://pumpkinor.github.io/16512948238106.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2021/11/28 算法学习开始]]></title>
+    <link href="https://pumpkinor.github.io/16381018403104.html"/>
+    <updated>2021-11-28T20:17:20+08:00</updated>
+    <id>https://pumpkinor.github.io/16381018403104.html</id>
+    <content type="html"><![CDATA[
+<pre class="line-numbers"><code class="language-plain_text">本次主要是学习基本的数据结构与算法 
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[异步处理]]></title>
+    <link href="https://pumpkinor.github.io/16356092078092.html"/>
+    <updated>2021-10-30T23:53:27+08:00</updated>
+    <id>https://pumpkinor.github.io/16356092078092.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>在使用异步处理这种架构模式的时候，我们一般都会使用 MQ 中间件配合实现异步流程，需要重点考虑四个方面的问题：</p>
 <ol>
-<li>
-<p>詹姆斯认为：习惯可以帮助我们实现目标，但归根结底，它们是在帮助我们成为自己想要成为的某种人。</p>
-</li>
-<li>
-<p>养成习惯的过程可以分为四个步骤：提示、渴求、反应、奖励。这个四步过程是一个无止境的反馈循环：提示触发渴求，渴求激发反应，而反应则提供满足渴求的奖励。<img src="media/16311528886260/16311533472939.jpg" alt="" /></p>
-</li>
-<li>
-<p>根据这个习惯循环，詹姆斯总结出了培养好习惯的四大定律：</p>
-<ul>
-<li>让习惯变得显而易见（明确自己想培养什么习惯 -- 应用「习惯叠加公式」）</li>
-<li>让习惯变得更有吸引力（提升习惯的吸引力 -- 喜好绑定 -- 在做 [ 喜欢的事情 ] 的同时，我必须开始 [ 新习惯 ] ）</li>
-<li>让习惯简便易行（当你开始培养一种新习惯时，它所用时间不应超过两分钟。）</li>
-<li>让习惯带来愉悦（把即时奖励与戒除坏习惯相结合）</li>
-</ul>
-<p><img src="media/16311528886260/16311537316001.jpg" alt="" /></p>
-</li>
-<li>
-<p>产品的微小设计能改变很多人的生活，这是我喜欢做产品的原因，也是最让我着迷的地方。</p>
-</li>
-</ol>
-<h2><a id="conclusion" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>conclusion</h2>
-<p>微小的改进有时候会带来很大的改变</p>
-<p>培养习惯持续精进比设定目标完成目标的策略来的长期更优</p>
-<h2><a id="thinking" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>thinking</h2>
-<p>关于好习惯的养成和坏习惯的摈除都是很难做到的事情，最起码于我自己而言是这样的。</p>
-<p>27天还是21天养成一个习惯的这种说法固然是有道理的，但其实做起来的难度不低。</p>
-<p>我自己是一个经常半途而废的人，做很多事情都是这样。额外的，也还缺少了部分的自驱力，一直以来有一种状况我无法理解自己，当我为别人做一些事情的时候，会比为自己做一些事情来的更有紧迫感，倒不是觉得别人的事情会比自己的事情更重要，我想应该是觉得自己的事情，办砸了也可以轻易获得自己的原谅，而别人的事情办砸了多少处理起来会比较麻烦。</p>
-<p>我现在的处境不太好，状态也不太好，经济也不太好，心情也不太好。很多时候承认自己自作自受是一件很难的事情，我已经到了不得不承认的时候了，我办砸了所有的事情，所有的事情，甚至有时候会觉得，已经搞砸了自己的整个人生。</p>
-<p>懂得很多道理依旧过不好这一生，此刻我知道自己应该做什么，才会变得所谓的更好，是的，我依旧觉得现实和及时止损在感情和生活上是一件无法接受甚至愚蠢的事情，但这在其他人看来才是愚蠢的不是。</p>
-<p>及时止损，仅限于投资领域。</p>
-<p>终究是要活下去，并且活得更好，才有所谓的未来，才有所谓的希望。</p>
-<p>我不知道此刻的我想要自己成为什么样子的人，我也觉得大部分人不会知道自己想要成为什么样子的人，但尝试从小事情开始，去养成一些好的习惯，保持思考，保持想念，保持奋进，或许最终还会是过不好这一辈子，但努力过好一辈子也确实不失为是一种成功了。</p>
-<h3><a id="reference" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>reference</h3>
-<ol>
-<li><a href="https://youzhiyouxing.cn/materials/986">https://youzhiyouxing.cn/materials/986</a></li>
-<li><a href="https://youzhiyouxing.cn/materials/937">https://youzhiyouxing.cn/materials/937</a></li>
+<li>要考虑异步流程丢消息或处理中断的情况，异步流程需要有备线进行补偿。比如，我们今天介绍的全量补偿方式，即便异步流程彻底失效，通过补偿也能让业务继续进行。</li>
+<li>异步处理的时候需要考虑消息重复的可能性，处理逻辑需要实现幂等，防止重复处理。</li>
+<li>微服务场景下不同服务多个实例监听消息的情况，一般不同服务需要同时收到相同的消息，而相同服务的多个实例只需要轮询接收消息。我们需要确认 MQ 的消息路由配置是否满足需求，以避免消息重复或漏发问题。</li>
+<li>要注意始终无法处理的死信消息，可能会引发堵塞 MQ 的问题。一般在遇到消息处理失败的时候，我们可以设置一定的重试策略。如果重试还是不行，那可以把这个消息扔到专有的死信队列特别处理，不要让死信影响到正常消息的处理。</li>
 </ol>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Linux下Docker安装和基础操作]]></title>
-    <link href="https://pumpkinor.github.io/16308976226415.html"/>
-    <updated>2021-09-06T11:07:02+08:00</updated>
-    <id>https://pumpkinor.github.io/16308976226415.html</id>
+    <title type="html"><![CDATA[生产就绪前要做的工作]]></title>
+    <link href="https://pumpkinor.github.io/16355083181390.html"/>
+    <updated>2021-10-29T19:51:58+08:00</updated>
+    <id>https://pumpkinor.github.io/16355083181390.html</id>
     <content type="html"><![CDATA[
-<h2><a id="%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在线安装Docker</h2>
-<p>使用官方在线安装脚本</p>
-<pre class="line-numbers"><code class="language-plain_text">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-</code></pre>
-<p>国内第三方安装脚本</p>
-<pre class="line-numbers"><code class="language-plain_text">curl -sSL https://get.daocloud.io/docker | sh
-</code></pre>
-<h2><a id="%E6%89%8B%E5%8A%A8%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>手动离线安装Docker</h2>
-<h2><a id="%E5%8D%B8%E8%BD%BDdocker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>卸载 docker</h2>
-<p>删除安装包：</p>
-<pre class="line-numbers"><code class="language-plain_text">yum remove docker-ce
-</code></pre>
-<p>删除镜像、容器、配置文件等内容：</p>
-<pre class="line-numbers"><code class="language-plain_text">rm -rf /var/lib/docker
-</code></pre>
-<h2><a id="docker%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker的基础用法</h2>
-<pre class="line-numbers"><code class="language-shell">查看版本号
-docker -v
-查看正在运行docker进程
-docker ps -a
-查看本地已有镜像
-docker images
-在线镜像关键字搜索
-docker search iamgename
-example：docker search mysql
-在线拉取docker镜像（获取最新版）
-docker pull iamgename
-example：docker pull mysql
-后台启动一个容器
-docker run -itd --name ubuntu-test ubuntu /bin/bash
--i: 交互式操作。
--t: 终端。
--d: 后台启动
-停止一个容器
-docker stop &lt;容器 ID&gt;
-对于已经启动过的容器  可以直接启动
-docker start &lt;容器 ID&gt;
-进入一个后台运行的容器可以使用下面两个命令
-docker attach &lt;容器 ID&gt;
-docker exec -it &lt;容器 ID&gt; /bin/bash
-推荐大家使用 docker exec 命令，因为此退出容器终端，不会导致容器的停止。
-删除容器
-docker rm -f &lt;容器 ID&gt;
-导出容器
-docker export &lt;容器 ID&gt; &gt; 文件名.tar
-导入容器
-cat docker/文件名.tar | docker import - 仓库名:tag名
-运行应用
-docker run -d -p 5000:5000 imagename 应用执行命令
--d: 后台运行
--p: 指定端口映射
-获取容器的标准输出流日志
-docker logs -f  &lt;容器 ID&gt; 
-查看 Docker 的底层信息
-docker inspect imagename
-删除image
-docker rmi 镜像id/tag名
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>今天，我和你介绍了如何使用 Spring Boot Actuaor 实现生产就绪的几个关键点，包括健康检测、暴露应用信息和指标监控。
+所谓磨刀不误砍柴工，健康检测可以帮我们实现负载均衡的联动；应用信息以及 Actuaor 提供的各种端点，可以帮我们查看应用内部情况，甚至对应用的一些参数进行调整；而指标监控，则有助于我们整体观察应用运行情况，帮助我们快速发现和定位问题。
+其实，完整的应用监控体系一般由三个方面构成，包括日志 Logging、指标 Metrics 和追踪 Tracing。其中，日志和指标我相信你应该已经比较清楚了。追踪一般不涉及开发工作就没有展开阐述，我和你简单介绍一下。
+追踪也叫做全链路追踪，比较有代表性的开源系统是SkyWalking和Pinpoint。一般而言，接入此类系统无需额外开发，使用其提供的 javaagent 来启动 Java 程序，就可以通过动态修改字节码实现各种组件的改写，以加入追踪代码（类似 AOP）。</p>
+<p>全链路追踪的原理是：</p>
+<ol>
+<li>请求进入第一个组件时，先生成一个 TraceID，作为整个调用链（Trace）的唯一标识；</li>
+<li>对于每次操作，都记录耗时和相关信息形成一个 Span 挂载到调用链上，Span 和 Span 之间同样可以形成树状关联，出现远程调用、跨系统调用的时候，把 TraceID 进行透传（比如，HTTP 调用通过请求透传，MQ 消息则通过消息透传）；</li>
+<li>把这些数据汇总提交到数据库中，通过一个 UI 界面查询整个树状调用链。</li>
+</ol>
+<p>同时，我们一般会把 TraceID 记录到日志中，方便实现日志和追踪的关联。我用一张图对比了日志、指标和追踪的区别和特点：
+<img src="media/16355083181390/16355084552562.jpg" alt="" /></p>
+<p>在我看来，完善的监控体系三者缺一不可，它们还可以相互配合，比如通过指标发现性能问题，通过追踪定位性能问题所在的应用和操作，最后通过日志定位出具体请求的明细参数。</p>
 
-docker save -o ~/container-backup.tar container-backup
-docker load -i ~/container-backup.tar
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[缓存设计]]></title>
+    <link href="https://pumpkinor.github.io/16355082600746.html"/>
+    <updated>2021-10-29T19:51:00+08:00</updated>
+    <id>https://pumpkinor.github.io/16355082600746.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>数据缓存的三大问题：</p>
+<ol>
+<li>我们不能把诸如 Redis 的缓存数据库完全当作数据库来使用。我们不能假设缓存始终可靠，也不能假设没有过期的数据必然可以被读取到，需要处理好缓存的回源逻辑；而且要显式设置 Redis 的最大内存使用和数据淘汰策略，避免出现 OOM 的问题。</li>
+<li>缓存的性能比数据库好很多，我们需要考虑大量请求绕过缓存直击数据库造成数据库瘫痪的各种情况。对于缓存瞬时大面积失效的缓存雪崩问题，可以通过差异化缓存过期时间解决；对于高并发的缓存 Key 回源问题，可以使用锁来限制回源并发数；对于不存在的数据穿透缓存的问题，可以通过布隆过滤器进行数据存在性的预判，或在缓存中也设置一个值来解决。</li>
+<li>当数据库中的数据有更新的时候，需要考虑如何确保缓存中数据的一致性。我们看到，“先更新数据库再删除缓存，访问的时候按需加载数据到缓存”的策略是最为妥当的，并且要尽量设置合适的缓存过期时间，这样即便真的发生不一致，也可以在缓存过期后数据得到及时同步。</li>
+</ol>
+<p>最后，我要提醒你的是，在使用缓存系统的时候，要监控缓存系统的内存使用量、命中率、对象平均过期时间等重要指标，以便评估系统的有效性，并及时发现问题。</p>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[接口设计]]></title>
+    <link href="https://pumpkinor.github.io/16354358641335.html"/>
+    <updated>2021-10-28T23:44:24+08:00</updated>
+    <id>https://pumpkinor.github.io/16354358641335.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>针对接口设计，和你深入探讨了三个方面的问题：</p>
+<ol>
+<li>针对响应体的设计混乱、响应结果的不明确问题，服务端需要明确响应体每一个字段的意义，以一致的方式进行处理，并确保不透传下游服务的错误。</li>
+<li>针对接口版本控制问题，主要就是在开发接口之前明确版本控制策略，以及尽量使用统一的版本控制策略两方面。</li>
+<li>针对接口的处理方式，我认为需要明确要么是同步要么是异步。如果 API 列表中既有同步接口也有异步接口，那么最好直接在接口名中明确。</li>
+</ol>
+<p>一个良好的接口文档不仅仅需要说明如何调用接口，更需要补充接口使用的最佳实践以及接口的 SLA 标准。我看到的大部分接口文档只给出了参数定义，但诸如幂等性、同步异步、缓存策略等看似内部实现相关的一些设计，其实也会影响调用方对接口的使用策略，最好也可以体现在接口文档中。
+最后，我再额外提一下，对于服务端出错的时候是否返回 200 响应码的问题，其实一直有争论。从 RESTful 设计原则来看，我们应该尽量利用 HTTP 状态码来表达错误，但也不是这么绝对。如果我们认为 HTTP 状态码是协议层面的履约，那么当这个错误已经不涉及 HTTP 协议时（换句话说，服务端已经收到请求进入服务端业务处理后产生的错误），不一定需要硬套协议本身的错误码。但涉及非法 URL、非法参数、没有权限等无法处理请求的情况，还是应该使用正确的响应码来应对。</p>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[解决代码重复]]></title>
+    <link href="https://pumpkinor.github.io/16354358129915.html"/>
+    <updated>2021-10-28T23:43:32+08:00</updated>
+    <id>https://pumpkinor.github.io/16354358129915.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>几个实际业务场景中可能出现的重复问题，以及消除重复的方式：</p>
+<ol>
+<li>有多个并行的类实现相似的代码逻辑。我们可以考虑提取相同逻辑在父类中实现，差异逻辑通过抽象方法留给子类实现。使用类似的模板方法把相同的流程和逻辑固定成模板，保留差异的同时尽可能避免代码重复。同时，可以使用 Spring 的 IoC 特性注入相应的子类，来避免实例化子类时的大量 if…else 代码。</li>
+<li>使用硬编码的方式重复实现相同的数据处理算法。我们可以考虑把规则转换为自定义注解，作为元数据对类或对字段、方法进行描述，然后通过反射动态读取这些元数据、字段或调用方法，实现规则参数和规则定义的分离。也就是说，把变化的部分也就是规则的参数放入注解，规则的定义统一处理。</li>
+<li>业务代码中常见的 DO、DTO、VO 转换时大量字段的手动赋值，遇到有上百个属性的复杂类型，非常非常容易出错。我的建议是，不要手动进行赋值，考虑使用 Bean 映射工具进行。此外，还可以考虑采用单元测试对所有字段进行赋值正确性校验。</li>
+</ol>
+<p>最后，我想说的是，我会把代码重复度作为评估一个项目质量的重要指标，如果一个项目几乎没有任何重复代码，那么它内部的抽象一定是非常好的。在做项目重构的时候，你也可以以消除重复为第一目标去考虑实现。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring 框架给业务代码带来的复杂度]]></title>
+    <link href="https://pumpkinor.github.io/16353486561713.html"/>
+    <updated>2021-10-27T23:30:56+08:00</updated>
+    <id>https://pumpkinor.github.io/16353486561713.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>对于 AOP 切 Feign 的案例，我们在实现功能时走了一些弯路。Spring Cloud 会使用 Spring Boot 的特性，根据当前引入包的情况做各种自动装配。如果我们要扩展 Spring 的组件，那么只有清晰了解 Spring 自动装配的运作方式，才能鉴别运行时对象在 Spring 容器中的情况，不能想当然认为代码中能看到的所有 Spring 的类都是 Bean。
+对于配置优先级的案例，分析配置源优先级时，如果我们以为看到PropertySourcesPropertyResolver 就看到了真相，后续进行扩展开发时就可能会踩坑。我们一定要注意，分析 Spring 源码时，你看到的表象不一定是实际运行时的情况，还需要借助日志或调试工具来理清整个过程。如果没有调试工具，你可以借助第 11 讲用到的 Arthas，来分析代码调用路径。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring中的IOC和AOP]]></title>
+    <link href="https://pumpkinor.github.io/16353485210513.html"/>
+    <updated>2021-10-27T23:28:41+08:00</updated>
+    <id>https://pumpkinor.github.io/16353485210513.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>Spring IoC 和 AOP 三个比较容易出错的点：</p>
+<ol>
+<li>让 Spring 容器管理对象，要考虑对象默认的 Scope 单例是否适合，对于有状态的类型，单例可能产生内存泄露问题。</li>
+<li>如果要为单例的 Bean 注入 Prototype 的 Bean，绝不是仅仅修改 Scope 属性这么简单。由于单例的 Bean 在容器启动时就会完成一次性初始化。最简单的解决方案是，把 Prototype 的 Bean 设置为通过代理注入，也就是设置 proxyMode 属性为 TARGET_CLASS。</li>
+<li>如果一组相同类型的 Bean 是有顺序的，需要明确使用 @Order 注解来设置顺序。你可以再回顾下，两个不同优先级切面中 @Before、@After 和 @Around 三种增强的执行顺序，是什么样的。</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[反射、注解和泛型与OOP]]></title>
+    <link href="https://pumpkinor.github.io/16352634397937.html"/>
+    <updated>2021-10-26T23:50:39+08:00</updated>
+    <id>https://pumpkinor.github.io/16352634397937.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>使用 Java 反射、注解和泛型高级特性配合 OOP 时，可能会遇到的一些坑：</p>
+<ol>
+<li>反射调用方法并不是通过调用时的传参确定方法重载，而是在获取方法的时候通过方法名和参数类型来确定的。遇到方法有包装类型和基本类型重载的时候，你需要特别注意这一点。</li>
+<li>反射获取类成员，需要注意 getXXX 和 getDeclaredXXX 方法的区别，其中 XXX 包括 Methods、Fields、Constructors、Annotations。这两类方法，针对不同的成员类型 XXX 和对象，在实现上都有一些细节差异，详情请查看官方文档。今天提到的 getDeclaredMethods 方法无法获得父类定义的方法，而 getMethods 方法可以，只是差异之一，不能适用于所有的 XXX。</li>
+<li>泛型因为类型擦除会导致泛型方法 T 占位符被替换为 Object，子类如果使用具体类型覆盖父类实现，编译器会生成桥接方法。这样既满足子类方法重写父类方法的定义，又满足子类实现的方法有具体的类型。使用反射来获取方法清单时，你需要特别注意这一点。</li>
+<li>自定义注解可以通过标记元注解 @Inherited 实现注解的继承，不过这只适用于类。如果要继承定义在接口或方法上的注解，可以使用 Spring 的工具类 AnnotatedElementUtils，并注意各种 getXXX 方法和 findXXX 方法的区别，详情查看Spring 的文档。</li>
+</ol>
+<p>最后，我要说的是。编译后的代码和原始代码并不完全一致，编译器可能会做一些优化，加上还有诸如 AspectJ 等编译时增强框架，使用反射动态获取类型的元数据可能会和我们编写的源码有差异，这点需要特别注意。你可以在反射中多写断言，遇到非预期的情况直接抛异常，避免通过反射实现的业务逻辑不符合预期。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OOM]]></title>
+    <link href="https://pumpkinor.github.io/16352633161086.html"/>
+    <updated>2021-10-26T23:48:36+08:00</updated>
+    <id>https://pumpkinor.github.io/16352633161086.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>Java 程序的 OOM 有如下几种可能：</p>
+<ol>
+<li>我们的程序确实需要超出 JVM 配置的内存上限的内存。不管是程序实现的不合理，还是因为各种框架对数据的重复处理、加工和转换，相同的数据在内存中不一定只占用一份空间。针对内存量使用超大的业务逻辑，比如缓存逻辑、文件上传下载和导出逻辑，我们在做容量评估时，可能还需要实际做一下 Dump，而不是进行简单的假设。</li>
+<li>出现内存泄露，其实就是我们认为没有用的对象最终会被 GC，但却没有。GC 并不会回收强引用对象，我们可能经常在程序中定义一些容器作为缓存，但如果容器中的数据无限增长，要特别小心最终会导致 OOM。使用 WeakHashMap 是解决这个问题的好办法，但值得注意的是，如果强引用的 Value 有引用 Key，也无法回收 Entry。</li>
+<li>不合理的资源需求配置，在业务量小的时候可能不会出现问题，但业务量一大可能很快就会撑爆内存。比如，随意配置 Tomcat 的 max-http-header-size 参数，会导致一个请求使用过多的内存，请求量大的时候出现 OOM。在进行参数配置的时候，我们要认识到，很多限制类参数限制的是背后资源的使用，资源始终是有限的，需要根据实际需求来合理设置参数。</li>
+</ol>
+<p>最后我想说的是，在出现 OOM 之后，也不用过于紧张。我们可以根据错误日志中的异常信息，再结合 jstat 等命令行工具观察内存使用情况，以及程序的 GC 日志，来大致定位出现 OOM 的内存区块和类型。其实，我们遇到的 90% 的 OOM 都是堆 OOM，对 JVM 进程进行堆内存 Dump，或使用 jmap 命令分析对象内存占用排行，一般都可以很容易定位到问题。
+这里，我建议你为生产系统的程序配置 JVM 参数启用详细的 GC 日志，方便观察垃圾收集器的行为，并开启 HeapDumpOnOutOfMemoryError，以便在出现 OOM 时能自动 Dump 留下第一问题现场。对于 JDK8，你可以这么设置：</p>
+<pre class="line-numbers"><code class="language-plain_text">XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=. -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:gc.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M
 </code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java8的日期时间类]]></title>
+    <link href="https://pumpkinor.github.io/16351759157246.html"/>
+    <updated>2021-10-25T23:31:55+08:00</updated>
+    <id>https://pumpkinor.github.io/16351759157246.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>使用 Java 8 中的日期时间包 Java.time 的类进行各种操作，会比使用遗留的 Date、Calender 和 SimpleDateFormat 更简单、清晰，功能也更丰富、坑也比较少。
+建议全面改为使用 Java 8 的日期时间类型。
+这里有个误区是，认为 java.util.Date 类似于新 API 中的 LocalDateTime。其实不是，虽然它们都没有时区概念，但 java.util.Date 类是因为使用 UTC 表示，所以没有时区概念，其本质是时间戳；而 LocalDateTime，严格上可以认为是一个日期时间的表示，而不是一个时间点。因此，在把 Date 转换为 LocalDateTime 的时候，需要通过 Date 的 toInstant 方法得到一个 UTC 时间戳进行转换，并需要提供当前的时区，这样才能把 UTC 时间转换为本地日期时间（的表示）。反过来，把 LocalDateTime 的时间表示转换为 Date 时，也需要提供时区，用于指定是哪个时区的时间表示，也就是先通过 atZone 方法把 LocalDateTime 转换为 ZonedDateTime，然后才能获得 UTC 时间戳：</p>
+<pre class="line-numbers"><code class="language-plain_text">Date in = new Date();
+LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+</code></pre>
+<p>很多同学说使用新 API 很麻烦，还需要考虑时区的概念，一点都不简洁。但我通过这篇文章要和你说的是，并不是因为 API 需要设计得这么繁琐，而是 UTC 时间要变为当地时间，必须考虑时区。
+<img src="media/16351759157246/16351759443073.jpg" alt="" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[序列化]]></title>
+    <link href="https://pumpkinor.github.io/16351758138770.html"/>
+    <updated>2021-10-25T23:30:13+08:00</updated>
+    <id>https://pumpkinor.github.io/16351758138770.html</id>
+    <content type="html"><![CDATA[
+<p>序列化和反序列化时需要避开的几个坑：</p>
+<ol>
+<li>要确保序列化和反序列化算法的一致性。因为，不同序列化算法输出必定不同，要正确处理序列化后的数据就要使用相同的反序列化算法。</li>
+<li>Jackson 有大量的序列化和反序列化特性，可以用来微调序列化和反序列化的细节。需要注意的是，如果自定义 ObjectMapper 的 Bean，小心不要和 Spring Boot 自动配置的 Bean 冲突。</li>
+<li>在调试序列化反序列化问题时，我们一定要捋清楚三点：是哪个组件在做序列化反序列化、整个过程有几次序列化反序列化，以及目前到底是序列化还是反序列化。</li>
+<li>对于反序列化默认情况下，框架调用的是无参构造方法，如果要调用自定义的有参构造方法，那么需要告知框架如何调用。更合理的方式是，对于需要序列化的 POJO 考虑尽量不要自定义构造方法。</li>
+<li>枚举不建议定义在 DTO 中跨服务传输，因为会有版本问题，并且涉及序列化反序列化时会很复杂，容易出错。因此，我只建议在程序内部使用枚举。</li>
+</ol>
+<p>最后还有一点需要注意，如果需要跨平台使用序列化的数据，那么除了两端使用的算法要一致外，还可能会遇到不同语言对数据类型的兼容问题。这，也是经常踩坑的一个地方。如果你有相关需求，可以多做实验、多测试。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[List操作中的常见问题]]></title>
+    <link href="https://pumpkinor.github.io/16349120420894.html"/>
+    <updated>2021-10-22T22:14:02+08:00</updated>
+    <id>https://pumpkinor.github.io/16349120420894.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>List列表相关的错误案例：</p>
+<ol>
+<li>想当然认为，Arrays.asList 和 List.subList 得到的 List 是普通的、独立的 ArrayList，在使用时出现各种奇怪的问题。Arrays.asList 得到的是 Arrays 的内部类 ArrayList，List.subList 得到的是 ArrayList 的内部类 SubList，不能把这两个内部类转换为 ArrayList 使用。Arrays.asList 直接使用了原始数组，可以认为是共享“存储”，而且不支持增删元素；List.subList 直接引用了原始的 List，也可以认为是共享“存储”，而且对原始 List 直接进行结构性修改会导致 SubList 出现异常。对 Arrays.asList 和 List.subList 容易忽略的是，新的 List 持有了原始数据的引用，可能会导致原始数据也无法 GC 的问题，最终导致 OOM。</li>
+<li>想当然认为，Arrays.asList 一定可以把所有数组转换为正确的 List。当传入基本类型数组的时候，List 的元素是数组本身，而不是数组中的元素。</li>
+<li>想当然认为，内存中任何集合的搜索都是很快的，结果在搜索超大 ArrayList 的时候遇到性能问题。我们考虑利用 HashMap 哈希表随机查找的时间复杂度为 O(1) 这个特性来优化性能，不过也要考虑 HashMap 存储空间上的代价，要平衡时间和空间。</li>
+<li>想当然认为，链表适合元素增删的场景，选用 LinkedList 作为数据结构。在真实场景中读写增删一般是平衡的，而且增删不可能只是对头尾对象进行操作，可能在 90% 的情况下都得不到性能增益，建议使用之前通过性能测试评估一下。</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[数值计算-精度，舍入和溢出]]></title>
+    <link href="https://pumpkinor.github.io/16349119429216.html"/>
+    <updated>2021-10-22T22:12:22+08:00</updated>
+    <id>https://pumpkinor.github.io/16349119429216.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>浮点数的表示、计算、舍入和格式化、溢出等涉及的一些坑：</p>
+<ol>
+<li>切记，要精确表示浮点数应该使用 BigDecimal。并且，使用 BigDecimal 的 Double 入参的构造方法同样存在精度丢失问题，应该使用 String 入参的构造方法或者 BigDecimal.valueOf 方法来初始化。</li>
+<li>对浮点数做精确计算，参与计算的各种数值应该始终使用 BigDecimal，所有的计算都要通过 BigDecimal 的方法进行，切勿只是让 BigDecimal 来走过场。任何一个环节出现精度损失，最后的计算结果可能都会出现误差。</li>
+<li>对于浮点数的格式化，如果使用 String.format 的话，需要认识到它使用的是四舍五入，可以考虑使用 DecimalFormat 来明确指定舍入方式。但考虑到精度问题，我更建议使用 BigDecimal 来表示浮点数，并使用其 setScale 方法指定舍入的位数和方式。</li>
+<li>进行数值运算时要小心溢出问题，虽然溢出后不会出现异常，但得到的计算结果是完全错误的。我们考虑使用 Math.xxxExact 方法来进行运算，在溢出时能抛出异常，更建议对于可能会出现溢出的大数运算使用 BigInteger 类。</li>
+</ol>
+<p>总之，对于金融、科学计算等场景，请尽可能使用 BigDecimal 和 BigInteger，避免由精度和溢出问题引发难以发现，但影响重大的 Bug。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[关于相等的判断]]></title>
+    <link href="https://pumpkinor.github.io/16348300798689.html"/>
+    <updated>2021-10-21T23:27:59+08:00</updated>
+    <id>https://pumpkinor.github.io/16348300798689.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>首先，我们要注意 equals 和 == 的区别。业务代码中进行内容的比较，针对基本类型只能使用 ==，针对 Integer、String 在内的引用类型，需要使用 equals。Integer 和 String 的坑在于，使用 == 判等有时也能获得正确结果。
+其次，对于自定义类型，如果类型需要参与判等，那么务必同时实现 equals 和 hashCode 方法，并确保逻辑一致。
+如果希望快速实现 equals、hashCode 方法，我们可以借助 IDE 的代码生成功能，或使用 Lombok 来生成。如果类型也要参与比较，那么 compareTo 方法的逻辑同样需要和 equals、hashCode 方法一致。最后，Lombok 的 @EqualsAndHashCode 注解实现 equals 和 hashCode 的时候，默认使用类型所有非 static、非 transient 的字段，且不考虑父类。如果希望改变这种默认行为，可以使用 @EqualsAndHashCode.Exclude 排除一些字段，并设置 callSuper = true 来让子类的 equals 和 hashCode 调用父类的相应方法。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[数据库索引]]></title>
+    <link href="https://pumpkinor.github.io/16348300291442.html"/>
+    <updated>2021-10-21T23:27:09+08:00</updated>
+    <id>https://pumpkinor.github.io/16348300291442.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>关于索引的两个误区。</p>
+<ol>
+<li>考虑到索引的维护代价、空间占用和查询时回表的代价，不能认为索引越多越好。索引一定是按需创建的，并且要尽可能确保足够轻量。一旦创建了多字段的联合索引，我们要考虑尽可能利用索引本身完成数据查询，减少回表的成本。</li>
+<li>不能认为建了索引就一定有效，对于后缀的匹配查询、查询中不包含联合索引的第一列、查询条件涉及函数计算等情况无法使用索引。此外，即使 SQL 本身符合索引的使用条件，MySQL 也会通过评估各种查询方式的代价，来决定是否走索引，以及走哪个索引。</li>
+</ol>
+<p>因此，在尝试通过索引进行 SQL 性能优化的时候，务必通过执行计划或实际的效果来确认索引是否能有效改善性能问题，否则增加了索引不但没解决性能问题，还增加了数据库增删改的负担。如果对 EXPLAIN 给出的执行计划有疑问的话，你还可以利用 optimizer_trace 查看详细的执行计划做进一步分析。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring 声明式事务]]></title>
+    <link href="https://pumpkinor.github.io/16347435419123.html"/>
+    <updated>2021-10-20T23:25:41+08:00</updated>
+    <id>https://pumpkinor.github.io/16347435419123.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>Spring 声明式事务，与你总结了使用上可能遇到的三类坑，包括：</p>
+<ol>
+<li>因为配置不正确，导致方法上的事务没生效。我们务必确认调用 @Transactional 注解标记的方法是 public 的，并且是通过 Spring 注入的 Bean 进行调用的。</li>
+<li>因为异常处理不正确，导致事务虽然生效但出现异常时没回滚。Spring 默认只会对标记 @Transactional 注解的方法出现了 RuntimeException 和 Error 的时候回滚，如果我们的方法捕获了异常，那么需要通过手动编码处理事务回滚。如果希望 Spring 针对其他异常也可以回滚，那么可以相应配置 @Transactional 注解的 rollbackFor 和 noRollbackFor 属性来覆盖其默认设置。</li>
+<li>如果方法涉及多次数据库操作，并希望将它们作为独立的事务进行提交或回滚，那么我们需要考虑进一步细化配置事务传播方式，也就是 @Transactional 注解的 Propagation 属性。</li>
+</ol>
+<p>可见，正确配置事务可以提高业务项目的健壮性。但，又因为健壮性问题往往体现在异常情况或一些细节处理上，很难在主流程的运行和测试中发现，导致业务代码的事务处理逻辑往往容易被忽略，因此我在代码审查环节一直很关注事务是否正确处理。</p>
+<p>如果你无法确认事务是否真正生效，是否按照预期的逻辑进行，可以尝试打开 Spring 的部分 Debug 日志，通过事务的运作细节来验证。也建议你在单元测试时尽量覆盖多的异常场景，这样在重构时，也能及时发现因为方法的调用方式、异常处理逻辑的调整，导致的事务失效问题。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Http调用]]></title>
+    <link href="https://pumpkinor.github.io/16347434231238.html"/>
+    <updated>2021-10-20T23:23:43+08:00</updated>
+    <id>https://pumpkinor.github.io/16347434231238.html</id>
+    <content type="html"><![CDATA[
+<h4><a id="%E6%91%98%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>摘录</h4>
+<p>连接超时代表建立 TCP 连接的时间，读取超时代表了等待远端返回数据的时间，也包括远端程序处理的时间。在解决连接超时问题时，我们要搞清楚连的是谁；在遇到读取超时问题的时候，我们要综合考虑下游服务的服务标准和自己的服务标准，设置合适的读取超时时间。此外，在使用诸如 Spring Cloud Feign 等框架时务必确认，连接和读取超时参数的配置是否正确生效。
+对于重试，因为 HTTP 协议认为 Get 请求是数据查询操作，是无状态的，又考虑到网络出现丢包是比较常见的事情，有些 HTTP 客户端或代理服务器会自动重试 Get/Head 请求。如果你的接口设计不支持幂等，需要关闭自动重试。但，更好的解决方案是，遵从 HTTP 协议的建议来使用合适的 HTTP 方法。
+最后我们看到，包括 HttpClient 在内的 HTTP 客户端以及浏览器，都会限制客户端调用的最大并发数。如果你的客户端有比较大的请求调用并发，比如做爬虫，或是扮演类似代理的角色，又或者是程序本身并发较高，如此小的默认值很容易成为吞吐量的瓶颈，需要及时调整。</p>
 
 ]]></content>
   </entry>

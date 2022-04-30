@@ -79,9 +79,13 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="Note-Non%20original.html">Note-Non original</a></li>
+        
             <li><a href="configuration.html">configuration</a></li>
         
             <li><a href="after%20read.html">after read</a></li>
+        
+            <li><a href="Memo.html">Memo</a></li>
          
 
       </ul>
@@ -104,77 +108,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="16308976226415.html">
+                <a class="clearlink" href="16512948238106.html">
                 
-                  <h1>Linux下Docker安装和基础操作</h1>
+                  <h1></h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2><a id="%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>在线安装Docker</h2>
-<p>使用官方在线安装脚本</p>
-<pre class="line-numbers"><code class="language-plain_text">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-</code></pre>
-<p>国内第三方安装脚本</p>
-<pre class="line-numbers"><code class="language-plain_text">curl -sSL https://get.daocloud.io/docker | sh
-</code></pre>
-<h2><a id="%E6%89%8B%E5%8A%A8%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>手动离线安装Docker</h2>
-<h2><a id="%E5%8D%B8%E8%BD%BDdocker" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>卸载 docker</h2>
-<p>删除安装包：</p>
-<pre class="line-numbers"><code class="language-plain_text">yum remove docker-ce
-</code></pre>
-<p>删除镜像、容器、配置文件等内容：</p>
-<pre class="line-numbers"><code class="language-plain_text">rm -rf /var/lib/docker
-</code></pre>
-<h2><a id="docker%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker的基础用法</h2>
-<pre class="line-numbers"><code class="language-shell">查看版本号
-docker -v
-查看正在运行docker进程
-docker ps -a
-查看本地已有镜像
-docker images
-在线镜像关键字搜索
-docker search iamgename
-example：docker search mysql
-在线拉取docker镜像（获取最新版）
-docker pull iamgename
-example：docker pull mysql
-后台启动一个容器
-docker run -itd --name ubuntu-test ubuntu /bin/bash
--i: 交互式操作。
--t: 终端。
--d: 后台启动
-停止一个容器
-docker stop &lt;容器 ID&gt;
-对于已经启动过的容器  可以直接启动
-docker start &lt;容器 ID&gt;
-进入一个后台运行的容器可以使用下面两个命令
-docker attach &lt;容器 ID&gt;
-docker exec -it &lt;容器 ID&gt; /bin/bash
-推荐大家使用 docker exec 命令，因为此退出容器终端，不会导致容器的停止。
-删除容器
-docker rm -f &lt;容器 ID&gt;
-导出容器
-docker export &lt;容器 ID&gt; &gt; 文件名.tar
-导入容器
-cat docker/文件名.tar | docker import - 仓库名:tag名
-运行应用
-docker run -d -p 5000:5000 imagename 应用执行命令
--d: 后台运行
--p: 指定端口映射
-获取容器的标准输出流日志
-docker logs -f  &lt;容器 ID&gt; 
-查看 Docker 的底层信息
-docker inspect imagename
-删除image
-docker rmi 镜像id/tag名
-
-docker save -o ~/container-backup.tar container-backup
-docker load -i ~/container-backup.tar
-
-
-</code></pre>
-
+                        	
                         
                       </div>
                   </div>
@@ -182,10 +123,8 @@ docker load -i ~/container-backup.tar
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2021/09/06</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='configuration.html'>configuration</a></span>
+                    <span class="date">2022/04/30</span>
+                    
           				   
                     
 
@@ -211,7 +150,7 @@ docker load -i ~/container-backup.tar
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -252,9 +191,13 @@ docker load -i ~/container-backup.tar
 
       	<p class="cat-list">
         
+            <a href="Note-Non%20original.html"><strong>Note-Non original</strong></a>
+        
             <a href="configuration.html"><strong>configuration</strong></a>
         
             <a href="after%20read.html"><strong>after read</strong></a>
+        
+            <a href="Memo.html"><strong>Memo</strong></a>
          
         </p>
 
@@ -271,15 +214,63 @@ docker load -i ~/container-backup.tar
 	      
 		      
 			      <li class="post">
-			        <a href="16311528886260.html">Daily Reading 2021/09/09</a>
+			        <a href="16512949593862.html">为什么需要消息队列</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="16308976226415.html">Linux下Docker安装和基础操作</a>
+			        <a href="16512948238106.html"></a>
 			      </li>
 		     
+		  
+		      
+			      <li class="post">
+			        <a href="16381018403104.html">2021/11/28 算法学习开始</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16356092078092.html">异步处理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="16355083181390.html">生产就绪前要做的工作</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
 		   
 		  		</ul>
                 </div>
